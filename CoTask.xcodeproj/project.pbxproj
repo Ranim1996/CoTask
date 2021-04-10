@@ -14,6 +14,7 @@
 		AAF9CF72262222FC00F48AEB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF71262222FC00F48AEB /* Persistence.swift */; };
 		AAF9CF75262222FC00F48AEB /* CoTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF73262222FC00F48AEB /* CoTask.xcdatamodeld */; };
 		AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF7D2622239700F48AEB /* AddTaskView.swift */; };
+		AAF9CF822622361000F48AEB /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF812622361000F48AEB /* TaskDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		AAF9CF74262222FC00F48AEB /* CoTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoTask.xcdatamodel; sourceTree = "<group>"; };
 		AAF9CF76262222FC00F48AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAF9CF7D2622239700F48AEB /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		AAF9CF812622361000F48AEB /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */,
 				AAF9CF6A262222FA00F48AEB /* ContentView.swift */,
+				AAF9CF812622361000F48AEB /* TaskDetailsView.swift */,
 				AAF9CF7D2622239700F48AEB /* AddTaskView.swift */,
 				AAF9CF6C262222FC00F48AEB /* Assets.xcassets */,
 				AAF9CF71262222FC00F48AEB /* Persistence.swift */,
@@ -149,6 +152,7 @@
 			files = (
 				AAF9CF75262222FC00F48AEB /* CoTask.xcdatamodeld in Sources */,
 				AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */,
+				AAF9CF822622361000F48AEB /* TaskDetailsView.swift in Sources */,
 				AAF9CF72262222FC00F48AEB /* Persistence.swift in Sources */,
 				AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */,
 				AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */,
