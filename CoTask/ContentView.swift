@@ -30,7 +30,7 @@ struct ContentView: View {
 //                                .foregroundColor(.secondary)
                         }
                     }
-                }
+                }.onDelete(perform: deleteTasks)
             }
             
                .navigationBarTitle("Add Task")
@@ -44,6 +44,19 @@ struct ContentView: View {
                }
        }
         
+    }
+    
+    func deleteTasks(at offsets: IndexSet) {
+        for offset in offsets {
+            // find this task in our fetch request
+            let task = tasks[offset]
+
+            // delete it from the context
+            moc.delete(task)
+        }
+
+        // save the context
+        try? moc.save()
     }
     
 }
