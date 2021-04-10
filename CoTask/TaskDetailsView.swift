@@ -10,6 +10,10 @@ import CoreData
 
 struct TaskDetailsView: View {
     
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingDeleteAlert = false
+    
     let task: Task
     
     var body: some View {
@@ -39,8 +43,29 @@ struct TaskDetailsView: View {
             }
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
+        .alert(isPresented: $showingDeleteAlert) {
+            Alert(title: Text("Delete book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                    self.deleteBook()
+                }, secondaryButton: .cancel()
+            )
+        }
+        
+        .navigationBarItems(trailing: Button(action: {
+            self.showingDeleteAlert = true
+        }) {
+            Image(systemName: "trash")
+        })
         
     }
+    
+    func deleteBook() {
+        moc.delete(task)
+
+        // uncomment this line if you want to make the deletion permanent
+        // try? self.moc.save()
+        presentationMode.wrappedValue.dismiss()
+    }
+    
 }
 
 struct TaskDetailsView_Previews: PreviewProvider {
