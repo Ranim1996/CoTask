@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AAF9CF22262213FE00F48AEB /* CoTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF21262213FE00F48AEB /* CoTaskApp.swift */; };
-		AAF9CF24262213FE00F48AEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF23262213FE00F48AEB /* ContentView.swift */; };
-		AAF9CF26262213FF00F48AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF9CF25262213FF00F48AEB /* Assets.xcassets */; };
-		AAF9CF29262213FF00F48AEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF9CF28262213FF00F48AEB /* Preview Assets.xcassets */; };
-		AAF9CF2B262213FF00F48AEB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF2A262213FF00F48AEB /* Persistence.swift */; };
-		AAF9CF2E262213FF00F48AEB /* CoTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF2C262213FF00F48AEB /* CoTask.xcdatamodeld */; };
+		AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */; };
+		AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF6A262222FA00F48AEB /* ContentView.swift */; };
+		AAF9CF6D262222FC00F48AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF9CF6C262222FC00F48AEB /* Assets.xcassets */; };
+		AAF9CF70262222FC00F48AEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF9CF6F262222FC00F48AEB /* Preview Assets.xcassets */; };
+		AAF9CF72262222FC00F48AEB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF71262222FC00F48AEB /* Persistence.swift */; };
+		AAF9CF75262222FC00F48AEB /* CoTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF73262222FC00F48AEB /* CoTask.xcdatamodeld */; };
+		AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF7D2622239700F48AEB /* AddTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AAF9CF1E262213FE00F48AEB /* CoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAF9CF21262213FE00F48AEB /* CoTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoTaskApp.swift; sourceTree = "<group>"; };
-		AAF9CF23262213FE00F48AEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AAF9CF25262213FF00F48AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AAF9CF28262213FF00F48AEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AAF9CF2A262213FF00F48AEB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		AAF9CF2D262213FF00F48AEB /* CoTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoTask.xcdatamodel; sourceTree = "<group>"; };
-		AAF9CF2F262213FF00F48AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF9CF65262222FA00F48AEB /* CoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoTaskApp.swift; sourceTree = "<group>"; };
+		AAF9CF6A262222FA00F48AEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AAF9CF6C262222FC00F48AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAF9CF6F262222FC00F48AEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AAF9CF71262222FC00F48AEB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		AAF9CF74262222FC00F48AEB /* CoTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoTask.xcdatamodel; sourceTree = "<group>"; };
+		AAF9CF76262222FC00F48AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF9CF7D2622239700F48AEB /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AAF9CF1B262213FE00F48AEB /* Frameworks */ = {
+		AAF9CF62262222FA00F48AEB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,40 +39,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AAF9CF15262213FE00F48AEB = {
+		AAF9CF5C262222FA00F48AEB = {
 			isa = PBXGroup;
 			children = (
-				AAF9CF20262213FE00F48AEB /* CoTask */,
-				AAF9CF1F262213FE00F48AEB /* Products */,
+				AAF9CF67262222FA00F48AEB /* CoTask */,
+				AAF9CF66262222FA00F48AEB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AAF9CF1F262213FE00F48AEB /* Products */ = {
+		AAF9CF66262222FA00F48AEB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAF9CF1E262213FE00F48AEB /* CoTask.app */,
+				AAF9CF65262222FA00F48AEB /* CoTask.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AAF9CF20262213FE00F48AEB /* CoTask */ = {
+		AAF9CF67262222FA00F48AEB /* CoTask */ = {
 			isa = PBXGroup;
 			children = (
-				AAF9CF21262213FE00F48AEB /* CoTaskApp.swift */,
-				AAF9CF23262213FE00F48AEB /* ContentView.swift */,
-				AAF9CF25262213FF00F48AEB /* Assets.xcassets */,
-				AAF9CF2A262213FF00F48AEB /* Persistence.swift */,
-				AAF9CF2F262213FF00F48AEB /* Info.plist */,
-				AAF9CF2C262213FF00F48AEB /* CoTask.xcdatamodeld */,
-				AAF9CF27262213FF00F48AEB /* Preview Content */,
+				AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */,
+				AAF9CF6A262222FA00F48AEB /* ContentView.swift */,
+				AAF9CF7D2622239700F48AEB /* AddTaskView.swift */,
+				AAF9CF6C262222FC00F48AEB /* Assets.xcassets */,
+				AAF9CF71262222FC00F48AEB /* Persistence.swift */,
+				AAF9CF76262222FC00F48AEB /* Info.plist */,
+				AAF9CF73262222FC00F48AEB /* CoTask.xcdatamodeld */,
+				AAF9CF6E262222FC00F48AEB /* Preview Content */,
 			);
 			path = CoTask;
 			sourceTree = "<group>";
 		};
-		AAF9CF27262213FF00F48AEB /* Preview Content */ = {
+		AAF9CF6E262222FC00F48AEB /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				AAF9CF28262213FF00F48AEB /* Preview Assets.xcassets */,
+				AAF9CF6F262222FC00F48AEB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -78,13 +81,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AAF9CF1D262213FE00F48AEB /* CoTask */ = {
+		AAF9CF64262222FA00F48AEB /* CoTask */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAF9CF32262213FF00F48AEB /* Build configuration list for PBXNativeTarget "CoTask" */;
+			buildConfigurationList = AAF9CF79262222FC00F48AEB /* Build configuration list for PBXNativeTarget "CoTask" */;
 			buildPhases = (
-				AAF9CF1A262213FE00F48AEB /* Sources */,
-				AAF9CF1B262213FE00F48AEB /* Frameworks */,
-				AAF9CF1C262213FE00F48AEB /* Resources */,
+				AAF9CF61262222FA00F48AEB /* Sources */,
+				AAF9CF62262222FA00F48AEB /* Frameworks */,
+				AAF9CF63262222FA00F48AEB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -92,24 +95,24 @@
 			);
 			name = CoTask;
 			productName = CoTask;
-			productReference = AAF9CF1E262213FE00F48AEB /* CoTask.app */;
+			productReference = AAF9CF65262222FA00F48AEB /* CoTask.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AAF9CF16262213FE00F48AEB /* Project object */ = {
+		AAF9CF5D262222FA00F48AEB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					AAF9CF1D262213FE00F48AEB = {
+					AAF9CF64262222FA00F48AEB = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = AAF9CF19262213FE00F48AEB /* Build configuration list for PBXProject "CoTask" */;
+			buildConfigurationList = AAF9CF60262222FA00F48AEB /* Build configuration list for PBXProject "CoTask" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -117,44 +120,45 @@
 				en,
 				Base,
 			);
-			mainGroup = AAF9CF15262213FE00F48AEB;
-			productRefGroup = AAF9CF1F262213FE00F48AEB /* Products */;
+			mainGroup = AAF9CF5C262222FA00F48AEB;
+			productRefGroup = AAF9CF66262222FA00F48AEB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAF9CF1D262213FE00F48AEB /* CoTask */,
+				AAF9CF64262222FA00F48AEB /* CoTask */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AAF9CF1C262213FE00F48AEB /* Resources */ = {
+		AAF9CF63262222FA00F48AEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAF9CF29262213FF00F48AEB /* Preview Assets.xcassets in Resources */,
-				AAF9CF26262213FF00F48AEB /* Assets.xcassets in Resources */,
+				AAF9CF70262222FC00F48AEB /* Preview Assets.xcassets in Resources */,
+				AAF9CF6D262222FC00F48AEB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AAF9CF1A262213FE00F48AEB /* Sources */ = {
+		AAF9CF61262222FA00F48AEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAF9CF2E262213FF00F48AEB /* CoTask.xcdatamodeld in Sources */,
-				AAF9CF2B262213FF00F48AEB /* Persistence.swift in Sources */,
-				AAF9CF24262213FE00F48AEB /* ContentView.swift in Sources */,
-				AAF9CF22262213FE00F48AEB /* CoTaskApp.swift in Sources */,
+				AAF9CF75262222FC00F48AEB /* CoTask.xcdatamodeld in Sources */,
+				AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */,
+				AAF9CF72262222FC00F48AEB /* Persistence.swift in Sources */,
+				AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */,
+				AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		AAF9CF30262213FF00F48AEB /* Debug */ = {
+		AAF9CF77262222FC00F48AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -215,7 +219,7 @@
 			};
 			name = Debug;
 		};
-		AAF9CF31262213FF00F48AEB /* Release */ = {
+		AAF9CF78262222FC00F48AEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -270,7 +274,7 @@
 			};
 			name = Release;
 		};
-		AAF9CF33262213FF00F48AEB /* Debug */ = {
+		AAF9CF7A262222FC00F48AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -292,7 +296,7 @@
 			};
 			name = Debug;
 		};
-		AAF9CF34262213FF00F48AEB /* Release */ = {
+		AAF9CF7B262222FC00F48AEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -317,20 +321,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AAF9CF19262213FE00F48AEB /* Build configuration list for PBXProject "CoTask" */ = {
+		AAF9CF60262222FA00F48AEB /* Build configuration list for PBXProject "CoTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AAF9CF30262213FF00F48AEB /* Debug */,
-				AAF9CF31262213FF00F48AEB /* Release */,
+				AAF9CF77262222FC00F48AEB /* Debug */,
+				AAF9CF78262222FC00F48AEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAF9CF32262213FF00F48AEB /* Build configuration list for PBXNativeTarget "CoTask" */ = {
+		AAF9CF79262222FC00F48AEB /* Build configuration list for PBXNativeTarget "CoTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AAF9CF33262213FF00F48AEB /* Debug */,
-				AAF9CF34262213FF00F48AEB /* Release */,
+				AAF9CF7A262222FC00F48AEB /* Debug */,
+				AAF9CF7B262222FC00F48AEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -338,17 +342,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AAF9CF2C262213FF00F48AEB /* CoTask.xcdatamodeld */ = {
+		AAF9CF73262222FC00F48AEB /* CoTask.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				AAF9CF2D262213FF00F48AEB /* CoTask.xcdatamodel */,
+				AAF9CF74262222FC00F48AEB /* CoTask.xcdatamodel */,
 			);
-			currentVersion = AAF9CF2D262213FF00F48AEB /* CoTask.xcdatamodel */;
+			currentVersion = AAF9CF74262222FC00F48AEB /* CoTask.xcdatamodel */;
 			path = CoTask.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = AAF9CF16262213FE00F48AEB /* Project object */;
+	rootObject = AAF9CF5D262222FA00F48AEB /* Project object */;
 }

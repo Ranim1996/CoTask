@@ -10,11 +10,30 @@ import CoreData
 
 struct ContentView: View {
     
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Task.entity(), sortDescriptors: []) var tasks: FetchedResults<Task>
+
+    @State private var showingAddScreen = false
+    
     var body: some View {
-        Text("")
+        
+        NavigationView {
+           Text("Count: \(tasks.count)")
+               .navigationBarTitle("Add Task")
+               .navigationBarItems(trailing: Button(action: {
+                   self.showingAddScreen.toggle()
+               }) {
+                   Image(systemName: "plus")
+               })
+               .sheet(isPresented: $showingAddScreen) {
+                   AddTaskView().environment(\.managedObjectContext, self.moc)
+               }
+       }
+        
     }
+    
 }
-       
+  
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
