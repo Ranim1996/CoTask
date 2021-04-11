@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import AVFoundation
 
 struct ContentView: View {
     
@@ -19,6 +20,27 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
+                
+                Button(action: {
+                    
+                    for t in tasks {
+                        let utterance = AVSpeechUtterance(string: t.title ?? "no")
+                        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                        
+                        utterance.postUtteranceDelay = 10
+                        
+
+                        let synthesizer = AVSpeechSynthesizer()
+                        synthesizer.speak(utterance)
+                        
+                        
+                    }
+                    
+                }) {
+                    Text("Speak out")
+                }
+                
+                
                 ForEach(tasks, id: \.self) { task in
                     NavigationLink(destination: TaskDetailsView(task: task))
                     {
