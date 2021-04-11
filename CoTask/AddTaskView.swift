@@ -11,6 +11,7 @@ struct AddTaskView: View {
     
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
+
     
     @State private var title = ""
     @State private var describtion = ""
@@ -53,6 +54,7 @@ struct AddTaskView: View {
                     }
                 }
 
+
                 Section {
                     Button("Save") {
                         // add the task
@@ -60,12 +62,21 @@ struct AddTaskView: View {
                         newTask.title = self.title
                         newTask.describtion = self.describtion
                         newTask.member = self.member
-                        newTask.priority = self.priority
+                        newTask.priority = priorities.randomElement()
                         newTask.deadline = self.deadline
                         newTask.isDone = self.isDone
                         newTask.forToday = self.forToday
+                        newTask.period = "today"
 
-                        try? self.moc.save()
+                        do {
+                            print("New task \(newTask)")
+                            
+                            try self.moc.save()
+                            //print("New todo: \(todoItem.name ?? ""), Priority: \(todoItem.priority ?? "")")
+                        }
+                        catch {
+                            print(error)
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
