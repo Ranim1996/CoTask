@@ -17,7 +17,7 @@ struct AddTaskView: View {
     @State private var isDone = false
     @State private var forToday = false
     @State private var member = ""
-    @State private var priority = ""
+    @State private var priority = "High"
     @State private var deadline = Date()
 
     let members = ["Ranim", "Rawan", "Omar", "Obaida"]
@@ -36,14 +36,18 @@ struct AddTaskView: View {
                     TextField("Describtion", text: $describtion)
                 }
                 
-//                Section (header: Text("Priority")){
-//                    Picker("Priority", selection: $priority) {
-//                          ForEach(0 ..< priorities.count) { index in
-//                                 Text(self.priorities[index]).tag(index)
-//                           }
-//
-//                     }.pickerStyle(SegmentedPickerStyle())
-//                }
+                Picker(selection: $priority, label: Text("hi")) {
+                    ForEach(priorities, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+
+//                Text("Value: \(priority)")
+                
+                Section{
+                    DatePicker("Please enter a date", selection: $deadline).labelsHidden()
+                }
 
                 Section (header: Text("Member")){
                     Picker("Members", selection: $member) {
@@ -64,7 +68,7 @@ struct AddTaskView: View {
                         newTask.deadline = self.deadline
                         newTask.isDone = self.isDone
                         newTask.forToday = self.forToday
-
+                        
                         try? self.moc.save()
                         self.presentationMode.wrappedValue.dismiss()
                     }
