@@ -20,19 +20,13 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                
+                let synthesizer = AVSpeechSynthesizer()
                 Button(action: {
-                    
                     for t in tasks {
                         let utterance = AVSpeechUtterance(string: t.title ?? "no")
                         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                        
-                        utterance.postUtteranceDelay = 10
-                        
 
-                        let synthesizer = AVSpeechSynthesizer()
                         synthesizer.speak(utterance)
-                        
                         
                     }
                     
@@ -48,14 +42,12 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(task.title ?? "Unknown Title")
                                 .font(.headline)
-//                            Text(task.describtion ?? "Unknown Describtion")
-//                                .foregroundColor(.secondary)
                         }
                     }
                 }.onDelete(perform: deleteTasks)
             }
             
-               .navigationBarTitle("Add Task")
+               .navigationBarTitle("Home")
                .navigationBarItems(trailing: Button(action: {
                    self.showingAddScreen.toggle()
                }) {
