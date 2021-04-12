@@ -66,7 +66,7 @@ struct AddTaskView: View {
                         newTask.deadline = self.deadline
                         newTask.isDone = self.isDone
                         newTask.forToday = self.forToday
-                        newTask.period = "today"
+                        newTask.period = "upcoming"
 
                         do {
                             print("New task \(newTask)")

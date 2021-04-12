@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9EBACC0B2623E8960018CDDC /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBACC0A2623E8960018CDDC /* TaskItemView.swift */; };
 		AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */; };
 		AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF6A262222FA00F48AEB /* ContentView.swift */; };
 		AAF9CF6D262222FC00F48AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF9CF6C262222FC00F48AEB /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9EBACC0A2623E8960018CDDC /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
 		AAF9CF65262222FA00F48AEB /* CoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoTaskApp.swift; sourceTree = "<group>"; };
 		AAF9CF6A262222FA00F48AEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */,
 				AAF9CF6A262222FA00F48AEB /* ContentView.swift */,
+				9EBACC0A2623E8960018CDDC /* TaskItemView.swift */,
 				AAF9CF812622361000F48AEB /* TaskDetailsView.swift */,
 				AAF9CF7D2622239700F48AEB /* AddTaskView.swift */,
 				AAF9CF6C262222FC00F48AEB /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				AAF9CF75262222FC00F48AEB /* CoTask.xcdatamodeld in Sources */,
 				AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */,
 				AAF9CF822622361000F48AEB /* TaskDetailsView.swift in Sources */,
+				9EBACC0B2623E8960018CDDC /* TaskItemView.swift in Sources */,
 				AAF9CF72262222FC00F48AEB /* Persistence.swift in Sources */,
 				AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */,
 				AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */,

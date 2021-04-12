@@ -9,44 +9,6 @@ import SwiftUI
 import CoreData
 
 
-struct HorizontalLineShape: Shape {
-
-    func path(in rect: CGRect) -> Path {
-
-        let fill = CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height)
-        var path = Path()
-        path.addRoundedRect(in: fill, cornerSize: CGSize(width: 2, height: 2))
-
-        return path
-    }
-}
-
-struct HorizontalLine: View {
-    private var color: Color? = nil
-    private var height: CGFloat = 3.0
-    private var width: CGFloat = 120.0
-
-    init(color: Color, height: CGFloat = 3.0, width: CGFloat = 120.0) {
-        self.color = color
-        self.height = height
-        self.width = width
-    }
-
-    var body: some View {
-        HorizontalLineShape().fill(self.color!).frame(minWidth: width, maxWidth: width, minHeight: height, maxHeight: height)
-    }
-}
-
-
-enum Period: String, CaseIterable {
-    case today = "Today"
-    case upcoming = "Upcoming"
-    
-    static func withLabel(_ label: String) -> Period? {
-        return self.allCases.first{ "\($0)" == label }
-    }
-}
-
 
 struct ContentView: View {
     // MARK: - PROPERTIES
@@ -55,32 +17,43 @@ struct ContentView: View {
     
 
     @State private var showingAddScreen = false
+    
+    @State var offset = CGSize.zero
+    @State var offsetY : CGFloat = 0
+    @State var scale : CGFloat = 0.5
+    
 
     // MARK: - BODY
     var body: some View {
         NavigationView {
             List {
+                //Text("\(tasks.count)")
                 ForEach(Period.allCases, id: \.rawValue) { period in
                     Section(header: Text(period.rawValue)
                                 .frame(maxWidth: .infinity, alignment: .center)
                     ) {
                         ForEach(tasks.filter { Period.withLabel($0.period ?? "upcoming") == period }, id: \.self) { task in
                             
-                            VStack(alignment: .leading) {
+                            //TaskItemView(task: task)
+                            NavigationLink(destination: TaskDetailsView(task: task)){
+                                VStack(alignment: .leading) {
 
                                     Text(task.title ?? "Unknown Title").font(.headline)
 
-                                // Priority
-                                if(task.priority == "High") {
-                                    HorizontalLine(color: .red)
-                                }
-                                else if(task.priority == "Medium") {
-                                    HorizontalLine(color: .yellow)
-                                }
-                                else {
-                                    HorizontalLine(color: .green)
-                                }
-                            } //: VSTACK
+                                    // Priority
+                                    if(task.priority == "High") {
+                                        HorizontalLine(color: .red)
+                                    }
+                                    else if(task.priority == "Medium") {
+                                        HorizontalLine(color: .yellow)
+                                    }
+                                    else {
+                                        HorizontalLine(color: .green)
+                                    }
+                            
+                                    
+                                } //: VSTACK
+                            } //: NAVIGATIONLINK
                         } //: FOREACH
                         .onDelete(perform: deleteTask)
                     } //: SECTION
@@ -89,47 +62,24 @@ struct ContentView: View {
             } //: LIST
             //.listStyle(GroupedListStyle())
             .listStyle(PlainListStyle())
-
-            
-            
-                        
-
-//            List {
-//                ForEach(tasks, id: \.self) { task in
-//                    NavigationLink(destination: TaskDetailsView(task: task))
-//                    {
-//
-//                        VStack(alignment: .leading) {
-//                            Text(task.title ?? "Unknown Title")
-//                                .font(.headline)
-////                            Text(task.describtion ?? "Unknown Describtion")
-////                                .foregroundColor(.secondary)
-//                        }
-//                    }
-//                }
-//                .onDelete(perform: deleteTask)
-//                .onMove(perform: moveTask)
-//
-//
-//            }
-
-               .navigationBarTitle("Home")
-               .navigationBarItems(trailing: Button(action: {
-                   self.showingAddScreen.toggle()
-               }) {
-                   Image(systemName: "plus")
-               })
-               .sheet(isPresented: $showingAddScreen) {
-                   AddTaskView().environment(\.managedObjectContext, self.moc)
-               }
+           .navigationBarTitle("Home")
+           .navigationBarItems(trailing: Button(action: {
+               self.showingAddScreen.toggle()
+           }) {
+               Image(systemName: "plus")
+           })
+           .sheet(isPresented: $showingAddScreen) {
+               AddTaskView().environment(\.managedObjectContext, self.moc)
+           }
        }
     }
     
     // MARK: - FUNCTIONS
     func deleteTask(at offsets: IndexSet) {
-        deleteData(entityToFetch: "Task")
+       // deleteData(entityToFetch: "Task")
         
         for offset in offsets {
+            print("\(offsets)")
             // find this task in our fetch request
             let task = tasks[offset]
 
@@ -146,11 +96,11 @@ struct ContentView: View {
        // tasks.move(fromOffsets: source, toOffset: destination)
     }
     
-    // delete all data
+    // Delete all data
+    // https://stackoverflow.com/questions/1383598/core-data-quickest-way-to-delete-all-instances-of-an-entity
     func deleteData(entityToFetch: String) {
-        // 'init()' was deprecated in iOS 9.0: Use -initWithConcurrencyType: instead
-        let context = moc
-
+            let context = moc
+        
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
             fetchRequest.entity = NSEntityDescription.entity(forEntityName: entityToFetch, in: context)
             fetchRequest.includesPropertyValues = false
@@ -160,9 +110,7 @@ struct ContentView: View {
                     context.delete(result)
                 }
                 try context.save()
-               // completion(true)
             } catch {
-                //completion(false)
                 print("fetch error -\(error.localizedDescription)")
             }
         }
