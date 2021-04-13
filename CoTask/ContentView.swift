@@ -34,7 +34,7 @@ struct ContentView: View {
 //                    }
                     
                     var todayTasks = "Today's tasks are: "
-
+                    
                     //for t in tasks {
                     for (idx, t) in tasks.enumerated() {
                         if !t.isDone && t.period == "upcoming" {
