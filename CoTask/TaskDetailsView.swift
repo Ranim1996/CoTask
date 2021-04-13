@@ -25,37 +25,48 @@ struct TaskDetailsView: View {
     var body: some View {
         GeometryReader { geometry in
             
-            VStack (alignment: .leading , spacing: 12){
+            VStack (alignment: .leading , spacing: 5){
             
             Text("Describtion")
                 .font(.headline)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                
             Text(task.describtion ?? "Some information")
                 .foregroundColor(.secondary)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             
             
             Text("Priority")
                 .font(.headline)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                
             Text(task.priority ?? "Some information")
                 .foregroundColor(.secondary)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             
             
             Text("Member")
                 .font(.headline)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                
             Text(task.member ?? "Some information")
                 .foregroundColor(.secondary)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
     
             
             Text("Deadline")
                 .font(.headline)
-                Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+            Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
                 .foregroundColor(.secondary)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             }
             
             
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
-            Alert(title: Text("Delete book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+            Alert(title: Text("Delete Task"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
                     self.deleteBook()
                 }, secondaryButton: .cancel()
             )
