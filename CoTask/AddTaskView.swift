@@ -59,6 +59,7 @@ struct AddTaskView: View {
                     Button("Save") {
                         // add the task
                         let newTask = Task(context: self.moc)
+                        newTask.id = UUID()
                         newTask.title = self.title
                         newTask.describtion = self.describtion
                         newTask.member = self.member
