@@ -10,6 +10,20 @@ import CoreData
 
 
 
+struct CheckBoxView: View {
+    @Binding var checked: Bool
+
+    var body: some View {
+        Image(systemName: checked ? "checkmark.square.fill" : "square")
+            .foregroundColor(checked ? Color(UIColor.systemBlue) : Color.secondary)
+            .onTapGesture {
+                self.checked.toggle()
+            }
+    }
+}
+
+
+
 
 struct TaskItemView: View {
     // MARK: - PROPERTIES
@@ -22,10 +36,13 @@ struct TaskItemView: View {
     @State var offsetY : CGFloat = 0
     @State var scale : CGFloat = 0.5
     var width: CGFloat = 60.0
+    @State private var checked = false
+
     
     var body: some View {
         GeometryReader { geo in
             HStack (spacing : 0){
+
                 NavigationLink(destination: TaskDetailsView(task: task)){
                     VStack {
 
@@ -41,7 +58,7 @@ struct TaskItemView: View {
                         else {
                             HorizontalLine(color: .green)
                         }
-                
+            
                         
                    } //: VSTACK
                     

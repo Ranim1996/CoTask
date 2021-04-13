@@ -15,6 +15,8 @@ struct ContentView: View {
     @FetchRequest(entity: Task.entity(), sortDescriptors: []) var tasks: FetchedResults<Task>
     
     @State private var showingAddScreen = false
+    @State private var editingList = false
+    @State private var isEditing = false
 
     // MARK: - BODY
     var body: some View {
@@ -27,29 +29,44 @@ struct ContentView: View {
                         
                         ForEach(tasks.filter { Period.withLabel($0.period ?? "upcoming") == period && !$0.isDone }, id: \.self) { task in
                             
+                            
                             TaskItemView(task: task).frame(height: 60)
+                                
 
                         } //: FOREACH
+//                        .onMove(perform: moveTask)
+//                        .onLongPressGesture {
+//                            withAnimation {
+//                                self.editingList = true
+//                            }
+//                        }
                     } //: SECTION
                 } //: FOREACH
             } //: LIST
-            //.listStyle(GroupedListStyle())
-            .listStyle(PlainListStyle())
+            .listStyle(GroupedListStyle())
+            //.listStyle(PlainListStyle())
            .navigationBarTitle("Home")
            .navigationBarItems(trailing: Button(action: {
                self.showingAddScreen.toggle()
-           }) {
+           }
+           
+           ) {
                Image(systemName: "plus")
            })
            .sheet(isPresented: $showingAddScreen) {
                AddTaskView().environment(\.managedObjectContext, self.moc)
            }
-        }}
+        }
+    }
     
     
     // MARK: - FUNCTIONS
-    private func moveTask(source: IndexSet, destination: Int) {
-       // tasks.move(fromOffsets: source, toOffset: destination)
+    private func moveTask(fromOffsets source: IndexSet, toOffset destination: Int) {
+        //tasks.move(fromOffsets: source, toOffset: destination)
+        
+        withAnimation {
+            editingList = false
+        }
     }
 }
   

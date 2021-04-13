@@ -41,6 +41,8 @@ struct TaskDetailsView: View {
                 .foregroundColor(.secondary)
     
             }
+            
+
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
