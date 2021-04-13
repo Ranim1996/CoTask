@@ -79,7 +79,11 @@ struct ContentView: View {
                     synthesizer.speak(utterance)
 
                 }) {
-                    Text("Speak out")
+                    
+                    Image("speaker")
+                        .padding(EdgeInsets(top: 10, leading: 250, bottom: 0, trailing: 10))
+                    
+//                    Text("Speak out")
                 }
 
                 ForEach(Period.allCases, id: \.rawValue) { period in
