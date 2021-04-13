@@ -25,32 +25,45 @@ struct TaskDetailsView: View {
     var body: some View {
         GeometryReader { geometry in
             
-            VStack (alignment: .leading , spacing: 12){
-            
+
+            VStack (alignment: .leading , spacing: 5){
+
+
                 Text("Describtion")
                     .font(.headline)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    
                 Text(task.describtion ?? "Some information")
                     .foregroundColor(.secondary)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
                 
                 Text("Priority")
                     .font(.headline)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    
                 Text(task.priority ?? "Some information")
                     .foregroundColor(.secondary)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
                 
                 Text("Member")
                     .font(.headline)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    
                 Text(task.member ?? "Some information")
                     .foregroundColor(.secondary)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
         
                 
                 Text("Deadline")
                     .font(.headline)
-                    Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
-                    .foregroundColor(.secondary)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
-               
+                Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
+                    .foregroundColor(.secondary)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+
                 
                 HStack {
                     Button(action: {
@@ -64,7 +77,7 @@ struct TaskDetailsView: View {
                     })
                     .padding()
                     .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color.blue)
+                    .background(Color.blue).opacity(0.9)
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                     
@@ -79,16 +92,17 @@ struct TaskDetailsView: View {
                     })
                     .padding()
                     .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color.blue)
+                    .background(Color.blue).opacity(0.9)
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                 }
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
             }
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
-            Alert(title: Text("Delete book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+            Alert(title: Text("Delete Task"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
                     self.deleteBook()
                 }, secondaryButton: .cancel()
             )
@@ -97,7 +111,7 @@ struct TaskDetailsView: View {
         .navigationBarItems(trailing: Button(action: {
             self.showingDeleteAlert = true
         }) {
-            Image(systemName: "trash")
+            Image(systemName: "trash").foregroundColor(Color.blue).opacity(0.9)
         })
         
     }
@@ -117,7 +131,7 @@ struct TaskDetailsView_Previews: PreviewProvider {
 
     static var previews: some View {
         let task = Task(context: moc)
-        task.title = "Tesk"
+        task.title = "Task"
         task.describtion = "Some information"
         task.member = "Ranim"
         task.priority = "High"

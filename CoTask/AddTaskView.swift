@@ -80,7 +80,7 @@ struct AddTaskView: View {
                             newTask.isDone = self.isDone
                             newTask.forToday = self.forToday
                             newTask.period = "upcoming"
-     
+
                             do {
                                 
                                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
@@ -93,7 +93,7 @@ struct AddTaskView: View {
                                 }
                                 let content = UNMutableNotificationContent()
                                     content.title = "CoTask"
-                                    content.body = "Task to be done \(newTask.title ?? "title")"
+                                    content.body = "Do not forget to finish task: \(newTask.title ?? "title"), the deadline is today."
                                     content.sound = UNNotificationSound.default
                                 
                                 guard let timeInterval = newTask.deadline?.timeIntervalSinceNow
@@ -128,7 +128,7 @@ struct AddTaskView: View {
                     }
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.blue)
+                    .background(Color.blue).opacity(0.9)
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                 }
