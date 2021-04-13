@@ -27,28 +27,63 @@ struct TaskDetailsView: View {
             
             VStack (alignment: .leading , spacing: 12){
             
-            Text("Describtion")
-                .font(.headline)
-            Text(task.describtion ?? "Some information")
-                .foregroundColor(.secondary)
-            
-            
-            Text("Priority")
-                .font(.headline)
-            Text(task.priority ?? "Some information")
-                .foregroundColor(.secondary)
-            
-            
-            Text("Member")
-                .font(.headline)
-            Text(task.member ?? "Some information")
-                .foregroundColor(.secondary)
-    
-            
-            Text("Deadline")
-                .font(.headline)
-                Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
-                .foregroundColor(.secondary)
+                Text("Describtion")
+                    .font(.headline)
+                Text(task.describtion ?? "Some information")
+                    .foregroundColor(.secondary)
+                
+                
+                Text("Priority")
+                    .font(.headline)
+                Text(task.priority ?? "Some information")
+                    .foregroundColor(.secondary)
+                
+                
+                Text("Member")
+                    .font(.headline)
+                Text(task.member ?? "Some information")
+                    .foregroundColor(.secondary)
+        
+                
+                Text("Deadline")
+                    .font(.headline)
+                    Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
+                    .foregroundColor(.secondary)
+                
+               
+                
+                HStack {
+                    Button(action: {
+                        task.forToday = true
+                        task.period = "today"
+                        
+                        // close view
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Today")
+                    })
+                    .padding()
+                    .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
+                    .background(Color.blue)
+                    .cornerRadius(9)
+                    .foregroundColor(Color.white)
+                    
+                    Button(action: {
+                        task.forToday = false
+                        task.period = "upcoming"
+                        
+                        // close view
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Upcoming")
+                    })
+                    .padding()
+                    .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
+                    .background(Color.blue)
+                    .cornerRadius(9)
+                    .foregroundColor(Color.white)
+                }
+                
             }
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)

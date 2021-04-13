@@ -39,7 +39,7 @@ struct ContentView: View {
 
                     //for t in tasks {
                     for (idx, t) in tasks.enumerated() {
-                        if !t.isDone && t.period == "upcoming" {
+                        if !t.isDone && t.period == "today" {
                             
                             todayTasks += "\(t.title ?? "") "
                             
@@ -93,13 +93,9 @@ struct ContentView: View {
            .sheet(isPresented: $showingAddScreen) {
                AddTaskView().environment(\.managedObjectContext, self.moc)
            }
-<<<<<<< HEAD
         }
     }
-=======
-        }}
 
->>>>>>> development
     
     
     // MARK: - FUNCTIONS
