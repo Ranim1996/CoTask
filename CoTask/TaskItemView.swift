@@ -51,13 +51,13 @@ struct TaskItemView: View {
 
                         // Priority
                         if(task.priority == "High") {
-                            HorizontalLine(color: .red)
+                            HorizontalLine(color: .red).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                         }
                         else if(task.priority == "Medium") {
-                            HorizontalLine(color: .yellow)
+                            HorizontalLine(color: .yellow).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                         }
                         else {
-                            HorizontalLine(color: .green)
+                            HorizontalLine(color: .green).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                         }
             
                         

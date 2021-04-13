@@ -71,6 +71,7 @@ struct AddTaskView: View {
                         // validate title missing
                         if self.title != "" {
                             let newTask = Task(context: self.moc)
+                            newTask.id = UUID()
                             newTask.title = self.title
                             newTask.describtion = self.describtion
                             newTask.member = self.member

@@ -35,11 +35,14 @@ struct ContentView: View {
 //                        }
 //                    }
                     
-                    var todayTasks = "Today's tasks are: "
+                    var todayTasks = ""
 
                     //for t in tasks {
                     for (idx, t) in tasks.enumerated() {
                         if !t.isDone && t.period == "today" {
+                            if(idx == 0) {
+                                todayTasks = "Today's tasks are: "
+                            }
                             
                             todayTasks += "\(t.title ?? "") "
                             
@@ -47,6 +50,10 @@ struct ContentView: View {
                                 todayTasks += " and"
                             }
                         }
+                    }
+                    
+                    if(todayTasks == "") {
+                        todayTasks = "No tasks for today"
                     }
                     
                     let utterance = AVSpeechUtterance(string: todayTasks)
