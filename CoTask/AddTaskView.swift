@@ -31,13 +31,16 @@ struct AddTaskView: View {
     
     var body: some View {
         NavigationView {
+            
             Form {
+                
                 Section (header: Text("Title")){
                     TextField("Title", text: $title)
                 }
                 
                 Section (header: Text("Describtion")){
                     TextField("Describtion", text: $describtion)
+                        .padding()
                 }
                 
                 Picker(selection: $priority, label: Text("hi")) {
@@ -63,7 +66,7 @@ struct AddTaskView: View {
                     Button("Save") {
                         // add the task
                          
-                        
+                        // validate title missing
                         if self.title != "" {
                             let newTask = Task(context: self.moc)
                             newTask.title = self.title
@@ -75,7 +78,6 @@ struct AddTaskView: View {
                             newTask.forToday = self.forToday
                             
                             do {
-                                try self.moc.save()
                                 
                                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
                                     success, error in
@@ -94,6 +96,10 @@ struct AddTaskView: View {
                                 else {
                                     return
                                 }
+                                
+                                try self.moc.save()
+                                
+                                
                                 
                                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
                                 
@@ -116,7 +122,13 @@ struct AddTaskView: View {
                         self.presentationMode.wrappedValue.dismiss()
                         
                     }
+                    .padding()
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(9)
+                    .foregroundColor(Color.white)
                 }
+                
             }
             .navigationBarTitle("Add Task")
             .alert(isPresented: $errorShowing) {
