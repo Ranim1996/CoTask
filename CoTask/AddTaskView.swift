@@ -25,6 +25,9 @@ struct AddTaskView: View {
 
     let priorities = ["High", "Medium", "Low"]
     
+    @State private var errorShowing: Bool = false
+    @State private var errorTitle: String = ""
+    @State private var errorMessage: String = ""
     
     var body: some View {
         NavigationView {
@@ -43,8 +46,6 @@ struct AddTaskView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-
-//                Text("Value: \(priority)")
                 
                 Section{
                     DatePicker("Please enter a date", selection: $deadline).labelsHidden()
@@ -61,96 +62,67 @@ struct AddTaskView: View {
                 Section {
                     Button("Save") {
                         // add the task
-                                                
-                        let newTask = Task(context: self.moc)
-                        newTask.title = self.title
-                        newTask.describtion = self.describtion
-                        newTask.member = self.member
-                        newTask.priority = self.priority
-                        newTask.deadline = self.deadline
-                        newTask.isDone = self.isDone
-                        newTask.forToday = self.forToday
+                         
                         
-                        try? self.moc.save()
-                        self.presentationMode.wrappedValue.dismiss()
-                                                
-                        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
-                            success, error in
-                                if success {
-                                    print("authorization granted")
-                                } else if let error = error {
-                                    print(error.localizedDescription)
+                        if self.title != "" {
+                            let newTask = Task(context: self.moc)
+                            newTask.title = self.title
+                            newTask.describtion = self.describtion
+                            newTask.member = self.member
+                            newTask.priority = self.priority
+                            newTask.deadline = self.deadline
+                            newTask.isDone = self.isDone
+                            newTask.forToday = self.forToday
+                            
+                            do {
+                                try self.moc.save()
+                                
+                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
+                                    success, error in
+                                        if success {
+                                            print("authorization granted")
+                                        } else if let error = error {
+                                            print(error.localizedDescription)
+                                        }
                                 }
+                                let content = UNMutableNotificationContent()
+                                    content.title = "CoTask"
+                                    content.body = "Task to be done \(newTask.title ?? "title")"
+                                    content.sound = UNNotificationSound.default
+                                
+                                guard let timeInterval = newTask.deadline?.timeIntervalSinceNow
+                                else {
+                                    return
+                                }
+                                
+                                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+                                
+                                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                                UNUserNotificationCenter.current().add(request)
+                                
+                            }
+                            catch {
+                                print(error)
+                            }
                         }
-                        let content = UNMutableNotificationContent()
-                            content.title = "CoTask"
-                            content.body = "Task to be done \(newTask.title ?? "title")"
-                            content.sound = UNNotificationSound.default
-                        
-                        guard let timeInterval = newTask.deadline?.timeIntervalSinceNow
                         else {
+                            self.errorShowing = true
+                            self.errorTitle = "Title is missing"
+                            self.errorMessage = "Make sure the task title at least"
                             return
                         }
                         
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+                        // close view
+                        self.presentationMode.wrappedValue.dismiss()
                         
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                        UNUserNotificationCenter.current().add(request)
-                        
-//                        UNUserNotificationCenter.current()
-//                            .requestAuthorization(options: [.alert, .badge, .sound]) {
-//                                success, error in
-//                                if (success){
-//                                    print("Success!!")
-//                                    let content = UNMutableNotificationContent()
-//                                    content.title = "Co Task"
-//                                    content.subtitle = "Task to be done"
-//                                    content.sound = UNNotificationSound.default
-//
-//                                    newTask.deadline = Date()
-//                                    var dateComponents = Calendar.current.dateComponents([.hour, .minute], from: newTask.deadline!)
-//                                    dateComponents.hour = 16
-//                                    dateComponents.minute = 23
-//
-//                                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-//
-//                                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//
-//                                    UNUserNotificationCenter.current().add(request)
-//                            } else if let error = error {
-//                                print(error.localizedDescription)
-//                            }
-//                        }
                     }
                 }
             }
             .navigationBarTitle("Add Task")
+            .alert(isPresented: $errorShowing) {
+                Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+            }
         }
-    }
-    
-    func scheduleNotification(task: Task) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
-            success, error in
-                if success {
-                    print("authorization granted")
-                } else if let error = error {
-                    print(error.localizedDescription)
-                }
-        }
-        let content = UNMutableNotificationContent()
-            content.title = "CoTask"
-        content.body = "Tomar \(task.title ?? "title")"
-            content.sound = UNNotificationSound.default
-        
-        guard let timeInterval = task.deadline?.timeIntervalSinceNow
-        else {
-            return
-        }
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
     }
 
 }
