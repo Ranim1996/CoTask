@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import AVFoundation
 
 
 struct ContentView: View {
@@ -22,6 +23,42 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
+                
+                let synthesizer = AVSpeechSynthesizer()
+                Button(action: {
+//                    for t in tasks {
+//                        if !t.isDone {
+//                            let utterance = AVSpeechUtterance(string: t.title ?? "no")
+//                            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//
+//                            synthesizer.speak(utterance)
+//                        }
+//                    }
+                    
+                    var todayTasks = "Today's tasks are: "
+
+                    //for t in tasks {
+                    for (idx, t) in tasks.enumerated() {
+                        if !t.isDone && t.period == "upcoming" {
+                            
+                            todayTasks += "\(t.title ?? "") "
+                            
+                            if(idx != tasks.count - 1) {
+                                todayTasks += " and"
+                            }
+                        }
+                    }
+                    
+                    let utterance = AVSpeechUtterance(string: todayTasks)
+                   utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                    synthesizer.speak(utterance)
+                    
+                }) {
+                    Text("Speak out")
+                }
+                
+                
+                
                 ForEach(Period.allCases, id: \.rawValue) { period in
                     Section(header: Text(period.rawValue)
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -56,8 +93,13 @@ struct ContentView: View {
            .sheet(isPresented: $showingAddScreen) {
                AddTaskView().environment(\.managedObjectContext, self.moc)
            }
+<<<<<<< HEAD
         }
     }
+=======
+        }}
+
+>>>>>>> development
     
     
     // MARK: - FUNCTIONS

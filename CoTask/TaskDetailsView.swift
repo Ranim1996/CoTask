@@ -16,33 +16,40 @@ struct TaskDetailsView: View {
     
     let task: Task
     
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             
-            VStack (alignment: .leading , spacing: 3.50){
+            VStack (alignment: .leading , spacing: 12){
             
             Text("Describtion")
                 .font(.headline)
             Text(task.describtion ?? "Some information")
                 .foregroundColor(.secondary)
             
-//            Spacer()
             
             Text("Priority")
                 .font(.headline)
             Text(task.priority ?? "Some information")
                 .foregroundColor(.secondary)
             
-//            Spacer()
             
             Text("Member")
                 .font(.headline)
             Text(task.member ?? "Some information")
                 .foregroundColor(.secondary)
     
-            }
             
-
+            Text("Deadline")
+                .font(.headline)
+                Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
+                .foregroundColor(.secondary)
+            }
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
@@ -79,6 +86,7 @@ struct TaskDetailsView_Previews: PreviewProvider {
         task.describtion = "Some information"
         task.member = "Ranim"
         task.priority = "High"
+        task.deadline = Date()
 
         return NavigationView {
             TaskDetailsView(task: task)
