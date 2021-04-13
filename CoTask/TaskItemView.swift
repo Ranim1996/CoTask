@@ -23,6 +23,7 @@ struct TaskItemView: View {
     @State var scale : CGFloat = 0.5
     var width: CGFloat = 60.0
     
+    // MARK: - BODY
     var body: some View {
         GeometryReader { geo in
             HStack (spacing : 0){
@@ -54,9 +55,9 @@ struct TaskItemView: View {
                     
                 // trash
                 ZStack {
-                Image(systemName: "checkmark")
-                  .font(.system(size: 20))
-                  .scaleEffect(scale)
+                    Image(systemName: "checkmark")
+                      .font(.system(size: 20))
+                      .scaleEffect(scale)
                 }
                 .frame(width: width, height: geo.size.height)
                 .background(Color.purple.opacity(0.15))
@@ -67,8 +68,8 @@ struct TaskItemView: View {
                 
                 // complete
                 ZStack {
-                Image(systemName: "trash")
-                    .font(.system(size: 20))
+                    Image(systemName: "trash")
+                        .font(.system(size: 20))
                 }
                 .frame(width: 60, height: geo.size.height)
                 .background(Color.red.opacity(0.15))
