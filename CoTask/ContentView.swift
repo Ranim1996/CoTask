@@ -82,6 +82,7 @@ struct ContentView: View {
                         
                         todayTasks = String(mySubstring)
                     }
+
                     
 
                     let utterance = AVSpeechUtterance(string: todayTasks)
