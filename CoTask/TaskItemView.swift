@@ -68,28 +68,28 @@ struct TaskItemView: View {
                } //: NAVIGATIONLINK
                 .padding()
                     .frame(width : geo.size.width, alignment: .leading)
-                Spacer(minLength: 15)
+                Spacer(minLength: 18)
                     
-                // trash
+                // complete
                 ZStack {
                     Image(systemName: "checkmark")
                       .font(.system(size: 20))
                       .scaleEffect(scale)
                 }
                 .frame(width: width, height: geo.size.height)
-                .background(Color.purple.opacity(0.15))
+                .background(Color.green.opacity(0.5))
                 .onTapGesture {
                     // mark as done
                     completeTask(taskId: task.id!)
                 }
                 
-                // complete
+                // trash
                 ZStack {
                     Image(systemName: "trash")
                         .font(.system(size: 20))
                 }
                 .frame(width: 60, height: geo.size.height)
-                .background(Color.red.opacity(0.15))
+                .background(Color.red.opacity(0.5))
                 .onTapGesture {
                     // delete
                     deleteTask(taskId: task.id!)
