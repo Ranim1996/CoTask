@@ -12,7 +12,64 @@ import SwiftUI
 import CoreData
 import AVFoundation
 
+//used to give the navigation bar some color
+struct NavigationConfigurator: UIViewControllerRepresentable {
+    var configure: (UINavigationController) -> Void = { _ in }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
+        let controller = UIViewController()
+        DispatchQueue.main.async {
+            if let navigationController = controller.navigationController {
+                self.configure(navigationController)
+                print("Successfully obtained navigation controller")
+            } else {
+                print("Failed to obtain navigation controller")
+            }
+        }
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController,
+        context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
+    }
+}
+
+extension UIColor {
+    public convenience init?(hex: String) {
+        let r, g, b, a: CGFloat
+
+        if hex.hasPrefix("#") {
+            let start = hex.index(hex.startIndex, offsetBy: 1)
+            let hexColor = String(hex[start...])
+
+            if hexColor.count == 8 {
+                let scanner = Scanner(string: hexColor)
+                var hexNumber: UInt64 = 0
+
+//                114, 52, 82
+                
+                if scanner.scanHexInt64(&hexNumber) {
+                    r = 114 / 255
+                    g = 52 / 255
+                    b = 82 / 255
+                    a = CGFloat(hexNumber & 0x000000) / 255
+
+                    self.init(red: r, green: g, blue: b, alpha: a)
+                    return
+                }
+            }
+        }
+
+        return nil
+    }
+}
+
 struct ContentView: View {
+    
+    // navbar color
+    init() {
+        UINavigationBar.appearance().barTintColor = UIColor(hex: "#723452ff")
+    }
 
     // MARK: - PROPERTIES
 
@@ -93,7 +150,7 @@ struct ContentView: View {
 
                 }) {
                     
-                    Image("speaker")
+                    Image("speak")
                         .padding(EdgeInsets(top: 10, leading: 250, bottom: 0, trailing: 10))
                     
 //                    Text("Speak out")
@@ -125,11 +182,20 @@ struct ContentView: View {
             .listStyle(GroupedListStyle())
             //.listStyle(PlainListStyle())
            .navigationBarTitle("Home")
+            
+            // give color to the navbar
+            .navigationBarTitle("Try it!", displayMode: .inline)
+            .background(NavigationConfigurator { nc in
+                nc.navigationBar.barTintColor = .blue
+                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+            })
+            
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddScreen.toggle()
             }
             ) {
                 Image(systemName: "plus")
+                    .foregroundColor(.white)
             })
            .sheet(isPresented: $showingAddScreen) {
                AddTaskView().environment(\.managedObjectContext, self.moc)
