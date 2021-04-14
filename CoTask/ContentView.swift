@@ -50,25 +50,37 @@ struct ContentView: View {
 //                    }
 
                     
-                    var todayTasks = ""
+                    var todayTasks = "Today's tasks are: "
+
 
                     //for t in tasks {
                     for (idx, t) in tasks.enumerated() {
                         if !t.isDone && t.period == "today" {
-                            if(idx == 0) {
-                                todayTasks = "Today's tasks are: "
-                            }
 
-                            todayTasks += "\(t.title ?? "") "
+                            todayTasks += "\(t.title ?? "") and"
 
-                            if(idx != tasks.count - 1) {
-                                todayTasks += " and"
-                            }
+//                            if(idx != tasks.count - 1) {
+//                                todayTasks += " and"
+//                            }
                         }
                     }
+                    
+                    //let stringLength = count(name) // Since swift1.2 `countElements` became `count`
+                    //let substringIndex = todayTasks.count - 3
+                    
 
-                    if(todayTasks == "") {
+
+                    if(todayTasks == "Today's tasks are: ") {
                         todayTasks = "No tasks for today"
+                    }
+                    else {
+                        let start = todayTasks.index(todayTasks.startIndex, offsetBy: 0)
+                        let end = todayTasks.index(todayTasks.endIndex, offsetBy: -3)
+                        let range = start..<end
+
+                        let mySubstring = todayTasks[range]  // play
+                        
+                        todayTasks = String(mySubstring)
                     }
                     
 
