@@ -153,8 +153,10 @@ struct ContentView: View {
 
                 }) {
                     
-                    Image("speak")
-                        .padding(EdgeInsets(top: 10, leading: 250, bottom: 0, trailing: 10))
+                    Image("audio")
+                        .resizable()
+                        .frame(width: 25.0, height: 25.0)
+                        .padding(EdgeInsets(top: 10, leading: 255, bottom: 0, trailing: 10))
                     
 //                    Text("Speak out")
                 }
