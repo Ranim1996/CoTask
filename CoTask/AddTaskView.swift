@@ -42,7 +42,6 @@ struct AddTaskView: View {
                 
                 VStack (alignment: .leading){
                 
-                    
 //                    Section (header: Text("Title")){
                     Text("Title")
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
