@@ -9,14 +9,8 @@ import SwiftUI
 import UserNotifications
 
 struct AddTaskView: View {
-    
-    init(){
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
-
     
     @State private var title = ""
     @State private var describtion = ""
@@ -44,48 +38,53 @@ struct AddTaskView: View {
                 
 //                    Section (header: Text("Title")){
                     Text("Title")
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                     
                     TextField("Title", text: $title)
+                        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(6)
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-//                    }
+                        //.background(Color(UIColor.tertiarySystemFill))
+                    
+                    
                     
 //                    Section (header: Text("Describtion")){
                     Text("Describtion")
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                        .padding(.top, 15)
+                    
                         TextField("Describtion", text: $describtion)
+                            .frame(height: 60)
+                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(6)
-                            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                     
 //                    }
                     
                     Text("Priority")
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                        .padding(.top, 15)
+
                     Picker(selection: $priority, label: Text("Priority")) {
                         ForEach(priorities, id: \.self) {
                             Text($0)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                     
 //                    Section{
                     Text("Deadline")
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                        .padding(.top, 15)
+
                     DatePicker("Please enter a date", selection: $deadline).labelsHidden()
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
 //                    }
 
-                    Section (header: Text("Select a member")){
+                   Section {
                         Picker("Members", selection: $member) {
                             ForEach(members, id: \.self) {
                                 Text($0)
                             }
                         }
-                    }.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                  }.padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
 
 
 //                    Section {
