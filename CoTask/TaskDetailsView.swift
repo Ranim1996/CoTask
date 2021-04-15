@@ -10,11 +10,19 @@ import CoreData
 
 struct TaskDetailsView: View {
     
+    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var showingDeleteAlert = false
     
     let task: Task
+    
+    init(task: Task) {
+        // 114, 52, 82
+        UINavigationBar.appearance().barTintColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+        UIButton.appearance().backgroundColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+        self.task = task
+    }
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -77,7 +85,7 @@ struct TaskDetailsView: View {
                     })
                     .padding()
                     .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color.blue).opacity(0.9)
+                    .background(Color(0x723452))
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                     
@@ -92,7 +100,7 @@ struct TaskDetailsView: View {
                     })
                     .padding()
                     .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color.blue).opacity(0.9)
+                    .background(Color(0x723452))
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                 }
@@ -111,7 +119,8 @@ struct TaskDetailsView: View {
         .navigationBarItems(trailing: Button(action: {
             self.showingDeleteAlert = true
         }) {
-            Image(systemName: "trash").foregroundColor(Color.blue).opacity(0.9)
+            Image(systemName: "trash")
+                .foregroundColor(Color.white)                
         })
         
     }

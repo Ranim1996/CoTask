@@ -36,8 +36,15 @@ struct TaskItemView: View {
     @State var offsetY : CGFloat = 0
     @State var scale : CGFloat = 0.5
     var width: CGFloat = 60.0
+//    let high: UIColor
+//    let medium: UIColor
+//    let low: UIColor
     @State private var checked = false
-
+    
+    init(task: Task) {
+        self.task = task
+    }
+    
     
     // MARK: - BODY
     var body: some View {
@@ -47,27 +54,31 @@ struct TaskItemView: View {
                 NavigationLink(destination: TaskDetailsView(task: task)){
                     VStack {
 
-                        Text(task.title ?? "Unknown Title").font(.headline)
+                        Text(task.title ?? "Unknown Title")
+                            .frame(alignment: .leading)
+                            .font(.headline)
 
                         // Priority
                         if(task.priority == "High") {
-                            HorizontalLine(color: .red).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                            HorizontalLine(color: Color(0xDD614A)) // hex (red)
                         }
                         else if(task.priority == "Medium") {
-                            HorizontalLine(color: .yellow).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                            HorizontalLine(color: Color(0xD6C652)) // (yellow)
                         }
                         else {
-                            HorizontalLine(color: .green).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                            HorizontalLine(color: Color(0x73A580)) // (green)
                         }
             
                         
                    } //: VSTACK
-                    
-                    Spacer()
+                    //.frame(width: geo.size.width, alignment: .leading)
+
+                    //Spacer()
 
                } //: NAVIGATIONLINK
-                .padding()
-                    .frame(width : geo.size.width, alignment: .leading)
+                //.padding()
+                .frame(width: geo.size.width, alignment: .leading)
+                
                 Spacer(minLength: 18)
                     
                 // complete
@@ -77,7 +88,7 @@ struct TaskItemView: View {
                       .scaleEffect(scale)
                 }
                 .frame(width: width, height: geo.size.height)
-                .background(Color.green.opacity(0.5))
+                .background(Color(0xDD614A).opacity(0.5))
                 .onTapGesture {
                     // mark as done
                     completeTask(taskId: task.id!)
@@ -89,7 +100,7 @@ struct TaskItemView: View {
                         .font(.system(size: 20))
                 }
                 .frame(width: 60, height: geo.size.height)
-                .background(Color.red.opacity(0.5))
+                .background(Color(0x73A580).opacity(0.5))
                 .onTapGesture {
                     // delete
                     deleteTask(taskId: task.id!)
@@ -117,6 +128,7 @@ struct TaskItemView: View {
             )
                 
         } //: GEOMETRYREADER
+        //.padding(.top, 15)
     } //: BODY
     
     
@@ -204,18 +216,19 @@ enum Period: String, CaseIterable {
     }
 }
 
-struct TaskItemView_Previews: PreviewProvider {
-    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-
-    static var previews: some View {
-        let task = Task(context: moc)
-        task.title = "Task"
-        task.describtion = "Some information"
-        task.member = "Ranim"
-        task.priority = "High"
-
-        return NavigationView {
-            TaskItemView(task: task)
-        }
-    }
-}
+//struct TaskItemView_Previews: PreviewProvider {
+//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//    static var previews: some View {
+//        let task = Task(context: moc)
+//        task.title = "Task"
+//        task.describtion = "Some information"
+//        task.member = "Ranim"
+//        task.priority = "High"
+//
+//
+//        return NavigationView {
+//            TaskItemView(task: task)
+//        }
+//    }
+//}

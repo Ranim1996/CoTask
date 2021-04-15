@@ -128,7 +128,7 @@ struct AddTaskView: View {
                     }
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.blue).opacity(0.9)
+                    .background(Color(0x723452)) // #723452
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                 }
