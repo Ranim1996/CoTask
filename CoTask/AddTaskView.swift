@@ -49,6 +49,10 @@ struct AddTaskView: View {
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
     
+    init() {
+        UITableView.appearance().separatorColor = .clear
+    }
+    
     var body: some View {
                 
         NavigationView {
@@ -107,33 +111,11 @@ struct AddTaskView: View {
 
                             do {
                                 
-                                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
-                                    success, error in
-                                        if success {
-                                            print("authorization granted")
-                                        } else if let error = error {
-                                            print(error.localizedDescription)
-                                        }
-                                }
-                                let content = UNMutableNotificationContent()
-                                    content.title = "CoTask"
-                                    content.body = "Do not forget to finish task: \(newTask.title ?? "title"), the deadline is today."
-                                    content.sound = UNNotificationSound.default
-                                
-                                guard let timeInterval = newTask.deadline?.timeIntervalSinceNow
-                                else {
-                                    return
-                                }
+                                permissionNotiication(task: newTask)
                                 
                                 try self.moc.save()
                                 
-                                
-                                
-                                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-                                
-                                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                                UNUserNotificationCenter.current().add(request)
-                                
+                                            
                             }
                             catch {
                                 print(error)
@@ -162,7 +144,37 @@ struct AddTaskView: View {
             .alert(isPresented: $errorShowing) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
+            
 
+        }
+    }
+    
+    func permissionNotiication(task: Task){
+        do {
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
+                success, error in
+                    if success {
+                        print("authorization granted")
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+            }
+            let content = UNMutableNotificationContent()
+                content.title = "CoTask"
+                content.body = "Do not forget to finish task: \(task.title ?? "title"), the deadline is today."
+                content.sound = UNNotificationSound.default
+            
+            guard let timeInterval = task.deadline?.timeIntervalSinceNow
+            else {
+                return
+            }
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request)
+            
         }
     }
 
