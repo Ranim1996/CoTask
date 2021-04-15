@@ -8,9 +8,9 @@
 import SwiftUI
 import CoreData
 
+
+
 struct TaskDetailsView: View {
-    
-    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var showingDeleteAlert = false
@@ -76,12 +76,8 @@ struct TaskDetailsView: View {
                     }, label: {
                         Text("Today")
                     })
-                    .padding()
-                    .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color(0x723452))
-                    .cornerRadius(9)
-                    .foregroundColor(Color.white)
-                    
+                    .modifier(PrimaryButton(maxWidth: geometry.size.width / 2))
+
                     Button(action: {
                         task.forToday = false
                         task.period = "upcoming"
@@ -91,11 +87,7 @@ struct TaskDetailsView: View {
                     }, label: {
                         Text("Upcoming")
                     })
-                    .padding()
-                    .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color(0x723452))
-                    .cornerRadius(9)
-                    .foregroundColor(Color.white)
+                    .modifier(PrimaryButton(maxWidth: geometry.size.width / 2))
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
