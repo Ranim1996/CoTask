@@ -112,7 +112,6 @@ struct ContentView: View {
             }
         }
 
-        
         if(todayTasks == "Today's tasks are: ") {
             todayTasks = "No tasks for today"
         }
