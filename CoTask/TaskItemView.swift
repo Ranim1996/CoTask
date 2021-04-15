@@ -48,9 +48,6 @@ struct TaskItemView: View {
             
                         
                    } //: VSTACK
-                    //.frame(width: geo.size.width, alignment: .leading)
-
-                    //Spacer()
 
                } //: NAVIGATIONLINK
                 //.padding()

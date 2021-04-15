@@ -71,6 +71,8 @@ struct TaskDetailsView: View {
                         task.forToday = true
                         task.period = "today"
                         
+                        try? self.moc.save()
+                        
                         // close view
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -81,6 +83,8 @@ struct TaskDetailsView: View {
                     Button(action: {
                         task.forToday = false
                         task.period = "upcoming"
+                        
+                        try? self.moc.save()
                         
                         // close view
                         self.presentationMode.wrappedValue.dismiss()
