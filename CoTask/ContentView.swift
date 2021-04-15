@@ -232,7 +232,8 @@ struct ContentView: View {
 
            }
         }
-        .background(Color(0xE5E5EA))
+        .accentColor( .black)
+        //.background(Color(0xE5E5EA))
     }
 
     // MARK: - FUNCTIONS

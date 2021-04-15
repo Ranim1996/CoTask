@@ -20,7 +20,7 @@ struct TaskDetailsView: View {
     init(task: Task) {
         // 114, 52, 82
         UINavigationBar.appearance().barTintColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
-        UIButton.appearance().backgroundColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+        UIButton.appearance().tintColor = UIColor(hex: "#FFFFFFff", red: 255, green: 255, blue: 255)
         self.task = task
     }
     

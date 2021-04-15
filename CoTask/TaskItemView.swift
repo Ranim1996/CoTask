@@ -21,11 +21,7 @@ struct TaskItemView: View {
     @State var scale : CGFloat = 0.5
     var width: CGFloat = 60.0
     @State private var checked = false
-    
-    init(task: Task) {
-        self.task = task
-    }
-    
+
     
     // MARK: - BODY
     var body: some View {
@@ -79,6 +75,7 @@ struct TaskItemView: View {
                 ZStack {
                     Image(systemName: "trash")
                         .font(.system(size: 20))
+                        .scaleEffect(scale)
                 }
                 .frame(width: 60, height: geo.size.height)
                 .background(Color(0x73A580).opacity(0.5))
@@ -109,7 +106,6 @@ struct TaskItemView: View {
             )
                 
         } //: GEOMETRYREADER
-        //.padding(.top, 15)
     } //: BODY
     
     
