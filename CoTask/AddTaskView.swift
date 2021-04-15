@@ -79,7 +79,7 @@ struct AddTaskView: View {
                         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
 //                    }
 
-                    Section (header: Text("Member")){
+                    Section (header: Text("Select a member")){
                         Picker("Members", selection: $member) {
                             ForEach(members, id: \.self) {
                                 Text($0)
@@ -152,11 +152,9 @@ struct AddTaskView: View {
                         }
                         .padding()
                         .frame(minWidth: 0, maxWidth: .infinity)
-                        .background(Color.blue).opacity(0.9)
+                        .background(Color(0x723452))
                         .cornerRadius(9)
                         .foregroundColor(Color.white)
-//                    }
-                    
                 }
                 
             }

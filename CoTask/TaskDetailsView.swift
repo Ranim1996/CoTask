@@ -10,11 +10,19 @@ import CoreData
 
 struct TaskDetailsView: View {
     
+    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var showingDeleteAlert = false
     
     let task: Task
+    
+    init(task: Task) {
+        // 114, 52, 82
+        UINavigationBar.appearance().barTintColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+        UIButton.appearance().backgroundColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+        self.task = task
+    }
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -77,7 +85,7 @@ struct TaskDetailsView: View {
                     })
                     .padding()
                     .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color.blue).opacity(0.9)
+                    .background(Color(0x723452))
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                     
@@ -92,7 +100,7 @@ struct TaskDetailsView: View {
                     })
                     .padding()
                     .frame(minWidth: 0, maxWidth: geometry.size.width / 2)
-                    .background(Color.blue).opacity(0.9)
+                    .background(Color(0x723452))
                     .cornerRadius(9)
                     .foregroundColor(Color.white)
                 }
@@ -104,7 +112,7 @@ struct TaskDetailsView: View {
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
             Alert(title: Text("Delete Task"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
-                    self.deleteBook()
+                    self.deleteTask()
                 }, secondaryButton: .cancel()
             )
         }
@@ -112,16 +120,17 @@ struct TaskDetailsView: View {
         .navigationBarItems(trailing: Button(action: {
             self.showingDeleteAlert = true
         }) {
-            Image(systemName: "trash").foregroundColor(Color.blue).opacity(0.9)
+            Image(systemName: "trash")
+                .foregroundColor(Color.white)
         })
         
     }
     
-    func deleteBook() {
+    func deleteTask() {
         moc.delete(task)
 
         // uncomment this line if you want to make the deletion permanent
-        // try? self.moc.save()
+        try? self.moc.save()
         presentationMode.wrappedValue.dismiss()
     }
     
