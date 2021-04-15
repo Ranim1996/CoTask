@@ -8,9 +8,9 @@
 import SwiftUI
 import CoreData
 
-
-
 struct TaskDetailsView: View {
+    
+    // MARK: - PROPERTIES
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var showingDeleteAlert = false
@@ -23,12 +23,18 @@ struct TaskDetailsView: View {
         return formatter
     }
     
+    // MARK: - BODY
     var body: some View {
+        
+        // MARK: - GEOMETYREADER
         GeometryReader { geometry in
             
             Color(.systemGray5)
             
+            // MARK: - VSTACK
             VStack (alignment: .leading){
+                
+                // MARK: - TEXTS VIEWS
                 Text("Describtion")
                     .modifier(LabelModifier())
                     
@@ -57,7 +63,10 @@ struct TaskDetailsView: View {
                     .modifier(TaskdetailModifier())
 
                 
+                // MARK: - HSTACK
                 HStack {
+                    
+                    // MARK: - Today BUTTON
                     Button(action: {
                         task.forToday = true
                         task.period = "today"
@@ -66,11 +75,13 @@ struct TaskDetailsView: View {
                         
                         // close view
                         self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
+                    }//: TodatBTN
+                    , label: {
                         Text("Today")
                     })
                     .modifier(PrimaryButton(maxWidth: geometry.size.width / 2))
 
+                    // MARK: - Upcoming BUTTON
                     Button(action: {
                         task.forToday = false
                         task.period = "upcoming"
@@ -79,44 +90,44 @@ struct TaskDetailsView: View {
                         
                         // close view
                         self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
+                    }//: UpcomingBTN
+                    , label: {
                         Text("Upcoming")
                     })
                     .modifier(PrimaryButton(maxWidth: geometry.size.width / 2))
-                }
+                }//: HSTACK
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
-            }
-//            )
-        }
+            }//: VSTACK
+        }//: GEOMETRYREADER
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
             Alert(title: Text("Delete Task"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
                     self.deleteTask()
                 }, secondaryButton: .cancel()
             )
-        }
+        }//: ALERTDeleteTask
         
         .navigationBarItems(trailing: Button(action: {
             self.showingDeleteAlert = true
         }) {
             Image(systemName: "trash")
                 .foregroundColor(Color.white)
-        })
+        })//: TrashICON
         
-    }
+    }//: BODY
     
+    // MARK: - FUNCTIONS
     // delete a task
     func deleteTask() {
         moc.delete(task)
-
-        // uncomment this line if you want to make the deletion permanent
         try? self.moc.save()
         presentationMode.wrappedValue.dismiss()
     }
     
 }
 
+// MARK: - PREVIEWPROVIDER
 struct TaskDetailsView_Previews: PreviewProvider {
     static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
 
