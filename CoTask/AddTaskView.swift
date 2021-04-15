@@ -49,9 +49,9 @@ struct AddTaskView: View {
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
     
-    init() {
-        UITableView.appearance().separatorColor = .clear
-    }
+//    init() {
+//        UITableView.appearance().separatorColor = .clear
+//    }
     
     var body: some View {
                 
@@ -134,9 +134,11 @@ struct AddTaskView: View {
                     }
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color(0x723452))
+                    .background(Color(UIColor(named: "Primary")!))
+//                    .background(Color(0x723452))
                     .cornerRadius(9)
-                    .foregroundColor(Color.white)
+//                    .foregroundColor(Color.white)
+                    .foregroundColor(Color(UIColor(named: "Accent")!))
 //                }
                 
             }
@@ -144,6 +146,7 @@ struct AddTaskView: View {
             .alert(isPresented: $errorShowing) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
+            
             
 
         }

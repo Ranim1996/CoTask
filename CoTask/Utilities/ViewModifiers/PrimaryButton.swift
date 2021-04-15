@@ -17,8 +17,9 @@ struct PrimaryButton: ViewModifier {
         content
             .padding()
             .frame(minWidth: 0, maxWidth: self.maxWidth)
-            .background(Color(0x723452))
+            .background(Color(UIColor(named: "Primary")!))
+//            .background(Color(0x723452))
             .cornerRadius(9)
-            .foregroundColor(Color.white)
+            .foregroundColor(Color(UIColor(named: "Accent")!))
     }
 }

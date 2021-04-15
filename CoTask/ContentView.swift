@@ -18,7 +18,10 @@ struct ContentView: View {
     // navbar color
     init() {
         // 114, 52, 82
-        UINavigationBar.appearance().barTintColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+//        UINavigationBar.appearance().barTintColor = UIColor(hex: "#723452ff", red: 114, green: 52, blue: 82)
+        UINavigationBar.appearance().tintColor = UIColor( .white)
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = UIColor(named: "Primary")
     }
 
     // MARK: - PROPERTIES
@@ -140,12 +143,13 @@ struct ContentView: View {
             } //: LIST
             //.listStyle(GroupedListStyle())
             .listStyle(PlainListStyle())
-           .navigationBarTitle("Home")
-            .background(Color(0xE5E5EA))
-            .foregroundColor(.white)
+            .navigationBarTitle("Home", displayMode: .inline)
+            
+//            .background(Color(0xE5E5EA))
+//            .foregroundColor(.white)
 
             // give color to the navbar
-            .navigationBarTitle("Try it!", displayMode: .inline)
+//            .navigationBarTitle("Try it!", displayMode: .inline)
 
             
             .navigationBarItems(trailing: Button(action: {

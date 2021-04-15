@@ -37,13 +37,16 @@ struct TaskItemView: View {
 
                         // Priority
                         if(task.priority == "High") {
-                            HorizontalLine(color: Color(0xDD614A)) // hex (red)
+                            HorizontalLine(color: Color(UIColor(named: "PriorityHigh")!))
+//                            HorizontalLine(color: Color(0xDD614A)) // hex (red)
                         }
                         else if(task.priority == "Medium") {
-                            HorizontalLine(color: Color(0xD6C652)) // (yellow)
+                            HorizontalLine(color: Color(UIColor(named: "PriorityMedium")!))
+//                            HorizontalLine(color: Color(0xD6C652)) // (yellow)
                         }
                         else {
-                            HorizontalLine(color: Color(0x73A580)) // (green)
+                            HorizontalLine(color: Color(UIColor(named: "PriorityLow")!))
+//                            HorizontalLine(color: Color(0x73A580)) // (green)
                         }
             
                         
