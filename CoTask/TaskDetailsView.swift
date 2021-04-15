@@ -111,7 +111,7 @@ struct TaskDetailsView: View {
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
             Alert(title: Text("Delete Task"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
-                    self.deleteBook()
+                    self.deleteTask()
                 }, secondaryButton: .cancel()
             )
         }
@@ -120,16 +120,16 @@ struct TaskDetailsView: View {
             self.showingDeleteAlert = true
         }) {
             Image(systemName: "trash")
-                .foregroundColor(Color.white)                
+                .foregroundColor(Color.white)
         })
         
     }
     
-    func deleteBook() {
+    func deleteTask() {
         moc.delete(task)
 
         // uncomment this line if you want to make the deletion permanent
-        // try? self.moc.save()
+        try? self.moc.save()
         presentationMode.wrappedValue.dismiss()
     }
     

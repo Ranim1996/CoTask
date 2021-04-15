@@ -46,12 +46,6 @@ let hexColor:(UInt32) -> (Color) = {
     return Color($0)
 }
 
-// Usage
-//Text("Hello World")
-//     .foregroundColor(⋮0x4286f4)
-//     .background(Color(0x420666))
-//     .background(hexColor(0x426f45))
-
 extension UIColor {
     var suColor: Color { Color(self) }
 
@@ -215,14 +209,8 @@ struct ContentView: View {
            .navigationBarTitle("Home")
             .background(Color(0xE5E5EA))
 
-            
-            
             // give color to the navbar
             .navigationBarTitle("Try it!", displayMode: .inline)
-//            .background(NavigationConfigurator { nc in
-//                nc.navigationBar.barTintColor = .blue
-//                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
-//            })
             
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddScreen.toggle()
@@ -240,13 +228,6 @@ struct ContentView: View {
     }
 
     // MARK: - FUNCTIONS
-    private func moveTask(fromOffsets source: IndexSet, toOffset destination: Int) {
-        //tasks.move(fromOffsets: source, toOffset: destination)
-        
-        withAnimation {
-            editingList = false
-        }
-    }
 }
 
   
