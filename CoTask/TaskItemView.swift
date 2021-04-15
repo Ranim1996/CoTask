@@ -51,9 +51,6 @@ struct TaskItemView: View {
             
                         
                    } //: VSTACK
-                    //.frame(width: geo.size.width, alignment: .leading)
-
-                    //Spacer()
 
                } //: NAVIGATIONLINK
                 //.padding()
@@ -71,7 +68,9 @@ struct TaskItemView: View {
                 .background(Color(0xDD614A).opacity(0.5))
                 .onTapGesture {
                     // mark as done
-                    completeTask(taskId: task.id!)
+                    withAnimation {
+                        completeTask(taskId: task.id!)
+                    }
                 }
                 
                 // trash
@@ -84,7 +83,9 @@ struct TaskItemView: View {
                 .background(Color(0x73A580).opacity(0.5))
                 .onTapGesture {
                     // delete
-                    deleteTask(taskId: task.id!)
+                    withAnimation {
+                        deleteTask(taskId: task.id!)
+                    }
                 }
                 
              } //: HSTACK
