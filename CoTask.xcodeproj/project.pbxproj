@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E99167F262870030016350D /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E99167E262870030016350D /* ColorExtension.swift */; };
 		9E991684262876200016350D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E991683262876200016350D /* Period.swift */; };
+		9E99168A2628888D0016350D /* HorizontalLineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9916892628888D0016350D /* HorizontalLineShape.swift */; };
 		9EBACC0B2623E8960018CDDC /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBACC0A2623E8960018CDDC /* TaskItemView.swift */; };
 		AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */; };
 		AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF6A262222FA00F48AEB /* ContentView.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		9E99167E262870030016350D /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		9E991683262876200016350D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		9E9916892628888D0016350D /* HorizontalLineShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineShape.swift; sourceTree = "<group>"; };
 		9EBACC0A2623E8960018CDDC /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
 		AAF9CF65262222FA00F48AEB /* CoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoTaskApp.swift; sourceTree = "<group>"; };
@@ -78,6 +80,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9E9916872628883D0016350D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9E991688262888540016350D /* Shapes */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9E991688262888540016350D /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				9E9916892628888D0016350D /* HorizontalLineShape.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		AAF9CF5C262222FA00F48AEB = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +115,7 @@
 		AAF9CF67262222FA00F48AEB /* CoTask */ = {
 			isa = PBXGroup;
 			children = (
+				9E9916872628883D0016350D /* Resources */,
 				9E991682262875F00016350D /* Models */,
 				9E99167726286E4D0016350D /* Utilities */,
 				9E99167626286E3B0016350D /* Views */,
@@ -194,6 +213,7 @@
 				AAF9CF75262222FC00F48AEB /* CoTask.xcdatamodeld in Sources */,
 				AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */,
 				AAF9CF822622361000F48AEB /* TaskDetailsView.swift in Sources */,
+				9E99168A2628888D0016350D /* HorizontalLineShape.swift in Sources */,
 				9E99167F262870030016350D /* ColorExtension.swift in Sources */,
 				9E991684262876200016350D /* Period.swift in Sources */,
 				9EBACC0B2623E8960018CDDC /* TaskItemView.swift in Sources */,

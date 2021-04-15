@@ -20,9 +20,6 @@ struct TaskItemView: View {
     @State var offsetY : CGFloat = 0
     @State var scale : CGFloat = 0.5
     var width: CGFloat = 60.0
-//    let high: UIColor
-//    let medium: UIColor
-//    let low: UIColor
     @State private var checked = false
     
     init(task: Task) {
@@ -164,17 +161,8 @@ struct TaskItemView: View {
 }
 
 
-struct HorizontalLineShape: Shape {
-    func path(in rect: CGRect) -> Path {
 
-        let fill = CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height)
-        var path = Path()
-        path.addRoundedRect(in: fill, cornerSize: CGSize(width: 2, height: 2))
-
-        return path
-    }
-}
-
+// MARK: - HORIZAONTAL LINE
 struct HorizontalLine: View {
     private var color: Color? = nil
     private var height: CGFloat = 4.0
@@ -192,19 +180,19 @@ struct HorizontalLine: View {
 }
 
 
-//struct TaskItemView_Previews: PreviewProvider {
-//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-//
-//    static var previews: some View {
-//        let task = Task(context: moc)
-//        task.title = "Task"
-//        task.describtion = "Some information"
-//        task.member = "Ranim"
-//        task.priority = "High"
-//
-//
-//        return NavigationView {
-//            TaskItemView(task: task)
-//        }
-//    }
-//}
+struct TaskItemView_Previews: PreviewProvider {
+    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+
+    static var previews: some View {
+        let task = Task(context: moc)
+        task.title = "Task"
+        task.describtion = "Some information"
+        task.member = "Ranim"
+        task.priority = "High"
+
+
+        return NavigationView {
+            TaskItemView(task: task)
+        }
+    }
+}
