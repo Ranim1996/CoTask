@@ -27,9 +27,8 @@ struct TaskDetailsView: View {
         GeometryReader { geometry in
             
             Color(.systemGray5)
-//                .overlay(
+            
             VStack (alignment: .leading){
-
                 Text("Describtion")
                     .font(.headline)
                     .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
@@ -115,6 +114,7 @@ struct TaskDetailsView: View {
         
     }
     
+    // delete a task
     func deleteTask() {
         moc.delete(task)
 

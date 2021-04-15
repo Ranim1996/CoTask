@@ -14,14 +14,14 @@ struct TaskItemView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Task.entity(), sortDescriptors: []) var tasks: FetchedResults<Task>
 
-    let task: Task
-
     @State var offset = CGSize.zero
     @State var offsetY : CGFloat = 0
     @State var scale : CGFloat = 0.5
     var width: CGFloat = 60.0
     @State private var checked = false
-
+    
+    let task: Task
+    
     
     // MARK: - BODY
     var body: some View {
@@ -38,15 +38,15 @@ struct TaskItemView: View {
                         // Priority
                         if(task.priority == "High") {
                             HorizontalLine(color: Color(UIColor(named: "PriorityHigh")!))
-//                            HorizontalLine(color: Color(0xDD614A)) // hex (red)
+                            //HorizontalLine(color: Color(0xDD614A)) // hex (red)
                         }
                         else if(task.priority == "Medium") {
                             HorizontalLine(color: Color(UIColor(named: "PriorityMedium")!))
-//                            HorizontalLine(color: Color(0xD6C652)) // (yellow)
+                            //HorizontalLine(color: Color(0xD6C652)) // (yellow)
                         }
                         else {
                             HorizontalLine(color: Color(UIColor(named: "PriorityLow")!))
-//                            HorizontalLine(color: Color(0x73A580)) // (green)
+                           // HorizontalLine(color: Color(0x73A580)) // (green)
                         }
             
                         
@@ -65,7 +65,7 @@ struct TaskItemView: View {
                       .scaleEffect(scale)
                 }
                 .frame(width: width, height: geo.size.height)
-                .background(Color(0xDD614A).opacity(0.5))
+                .background(Color(0x73A580).opacity(0.5))
                 .onTapGesture {
                     // mark as done
                     withAnimation {
@@ -80,7 +80,7 @@ struct TaskItemView: View {
                         .scaleEffect(scale)
                 }
                 .frame(width: 60, height: geo.size.height)
-                .background(Color(0x73A580).opacity(0.5))
+                .background(Color(0xDD614A).opacity(0.5))
                 .onTapGesture {
                     // delete
                     withAnimation {
@@ -189,7 +189,6 @@ struct TaskItemView_Previews: PreviewProvider {
         task.describtion = "Some information"
         task.member = "Ranim"
         task.priority = "High"
-
 
         return NavigationView {
             TaskItemView(task: task)

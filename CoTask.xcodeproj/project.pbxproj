@@ -54,6 +54,10 @@
 		9E99167626286E3B0016350D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAF9CF6A262222FA00F48AEB /* ContentView.swift */,
+				9EBACC0A2623E8960018CDDC /* TaskItemView.swift */,
+				AAF9CF812622361000F48AEB /* TaskDetailsView.swift */,
+				AAF9CF7D2622239700F48AEB /* AddTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,10 +135,6 @@
 				9E99167726286E4D0016350D /* Utilities */,
 				9E99167626286E3B0016350D /* Views */,
 				AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */,
-				AAF9CF6A262222FA00F48AEB /* ContentView.swift */,
-				9EBACC0A2623E8960018CDDC /* TaskItemView.swift */,
-				AAF9CF812622361000F48AEB /* TaskDetailsView.swift */,
-				AAF9CF7D2622239700F48AEB /* AddTaskView.swift */,
 				AAF9CF6C262222FC00F48AEB /* Assets.xcassets */,
 				AAF9CF71262222FC00F48AEB /* Persistence.swift */,
 				AAF9CF76262222FC00F48AEB /* Info.plist */,
