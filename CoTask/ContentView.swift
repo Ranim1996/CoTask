@@ -12,27 +12,27 @@ import SwiftUI
 import CoreData
 import AVFoundation
 
-//used to give the navigation bar some color
-struct NavigationConfigurator: UIViewControllerRepresentable {
-    var configure: (UINavigationController) -> Void = { _ in }
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
-        let controller = UIViewController()
-        DispatchQueue.main.async {
-            if let navigationController = controller.navigationController {
-                self.configure(navigationController)
-                print("Successfully obtained navigation controller")
-            } else {
-                print("Failed to obtain navigation controller")
-            }
-        }
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController,
-        context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
-    }
-}
+////used to give the navigation bar some color
+//struct NavigationConfigurator: UIViewControllerRepresentable {
+//    var configure: (UINavigationController) -> Void = { _ in }
+//
+//    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
+//        let controller = UIViewController()
+//        DispatchQueue.main.async {
+//            if let navigationController = controller.navigationController {
+//                self.configure(navigationController)
+//                print("Successfully obtained navigation controller")
+//            } else {
+//                print("Failed to obtain navigation controller")
+//            }
+//        }
+//        return controller
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewController,
+//        context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
+//    }
+//}
 
 extension UIColor {
     public convenience init?(hex: String) {
@@ -85,8 +85,12 @@ struct ContentView: View {
     // MARK: - BODY
 
     var body: some View {
+        
         NavigationView {
             List {
+                
+//                Color(.systemGray5)
+                
                 let synthesizer = AVSpeechSynthesizer()
                 Button(action: {
 
@@ -150,8 +154,10 @@ struct ContentView: View {
 
                 }) {
                     
-                    Image("speak")
-                        .padding(EdgeInsets(top: 10, leading: 250, bottom: 0, trailing: 10))
+                    Image("audio")
+                        .resizable()
+                        .frame(width: 25.0, height: 25.0)
+                        .padding(EdgeInsets(top: 10, leading: 255, bottom: 0, trailing: 10))
                     
 //                    Text("Speak out")
                 }
@@ -185,10 +191,10 @@ struct ContentView: View {
             
             // give color to the navbar
             .navigationBarTitle("Try it!", displayMode: .inline)
-            .background(NavigationConfigurator { nc in
-                nc.navigationBar.barTintColor = .blue
-                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
-            })
+//            .background(NavigationConfigurator { nc in
+//                nc.navigationBar.barTintColor = .blue
+//                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+//            })
             
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddScreen.toggle()

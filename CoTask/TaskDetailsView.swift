@@ -25,13 +25,13 @@ struct TaskDetailsView: View {
     var body: some View {
         GeometryReader { geometry in
             
-
-            VStack (alignment: .leading , spacing: 5){
-
+            Color(.systemGray5)
+//                .overlay(
+            VStack (alignment: .leading){
 
                 Text("Describtion")
                     .font(.headline)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
                     
                 Text(task.describtion ?? "Some information")
                     .foregroundColor(.secondary)
@@ -99,6 +99,7 @@ struct TaskDetailsView: View {
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 
             }
+//            )
         }
         .navigationBarTitle(Text(task.title ?? "Unknown Task"), displayMode: .inline)
         .alert(isPresented: $showingDeleteAlert) {
