@@ -30,39 +30,31 @@ struct TaskDetailsView: View {
             
             VStack (alignment: .leading){
                 Text("Describtion")
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(LabelModifier())
                     
                 Text(task.describtion ?? "Some information")
-                    .foregroundColor(.secondary)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(TaskdetailModifier())
                 
                 
                 Text("Priority")
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(LabelModifier())
                     
                 Text(task.priority ?? "Some information")
-                    .foregroundColor(.secondary)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(TaskdetailModifier())
                 
                 
                 Text("Member")
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(LabelModifier())
                     
                 Text(task.member ?? "Some information")
-                    .foregroundColor(.secondary)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(TaskdetailModifier())
         
                 
                 Text("Deadline")
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(LabelModifier())
                 
                 Text("\(task.deadline ?? Date(), formatter: self.dateFormatter)")
-                    .foregroundColor(.secondary)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                    .modifier(TaskdetailModifier())
 
                 
                 HStack {

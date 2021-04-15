@@ -12,6 +12,10 @@
 		9E99168A2628888D0016350D /* HorizontalLineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9916892628888D0016350D /* HorizontalLineShape.swift */; };
 		9E9916912628A4CE0016350D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9916902628A4CE0016350D /* PrimaryButton.swift */; };
 		9EBACC0B2623E8960018CDDC /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBACC0A2623E8960018CDDC /* TaskItemView.swift */; };
+		AA766C092628E7E000E0981E /* TitleFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA766C072628E7E000E0981E /* TitleFieldModifier.swift */; };
+		AA766C0A2628E7E000E0981E /* DescriptionFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA766C082628E7E000E0981E /* DescriptionFieldModifier.swift */; };
+		AA766C0D2628E86500E0981E /* TaskDetailModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA766C0C2628E86500E0981E /* TaskDetailModifier.swift */; };
+		AA766C102628E9F400E0981E /* LabelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA766C0F2628E9F400E0981E /* LabelModifier.swift */; };
 		AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */; };
 		AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9CF6A262222FA00F48AEB /* ContentView.swift */; };
 		AAF9CF6D262222FC00F48AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF9CF6C262222FC00F48AEB /* Assets.xcassets */; };
@@ -28,6 +32,10 @@
 		9E9916892628888D0016350D /* HorizontalLineShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineShape.swift; sourceTree = "<group>"; };
 		9E9916902628A4CE0016350D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		9EBACC0A2623E8960018CDDC /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
+		AA766C072628E7E000E0981E /* TitleFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleFieldModifier.swift; sourceTree = "<group>"; };
+		AA766C082628E7E000E0981E /* DescriptionFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionFieldModifier.swift; sourceTree = "<group>"; };
+		AA766C0C2628E86500E0981E /* TaskDetailModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailModifier.swift; sourceTree = "<group>"; };
+		AA766C0F2628E9F400E0981E /* LabelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelModifier.swift; sourceTree = "<group>"; };
 		AAF9CF65262222FA00F48AEB /* CoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF9CF68262222FA00F48AEB /* CoTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoTaskApp.swift; sourceTree = "<group>"; };
 		AAF9CF6A262222FA00F48AEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,7 +114,11 @@
 		9E99168F2628A4B70016350D /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				AA766C082628E7E000E0981E /* DescriptionFieldModifier.swift */,
+				AA766C072628E7E000E0981E /* TitleFieldModifier.swift */,
 				9E9916902628A4CE0016350D /* PrimaryButton.swift */,
+				AA766C0C2628E86500E0981E /* TaskDetailModifier.swift */,
+				AA766C0F2628E9F400E0981E /* LabelModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -226,9 +238,13 @@
 				AAF9CF7E2622239700F48AEB /* AddTaskView.swift in Sources */,
 				AAF9CF822622361000F48AEB /* TaskDetailsView.swift in Sources */,
 				9E99168A2628888D0016350D /* HorizontalLineShape.swift in Sources */,
+				AA766C102628E9F400E0981E /* LabelModifier.swift in Sources */,
 				9E99167F262870030016350D /* ColorExtension.swift in Sources */,
+				AA766C0D2628E86500E0981E /* TaskDetailModifier.swift in Sources */,
 				9E991684262876200016350D /* Period.swift in Sources */,
+				AA766C0A2628E7E000E0981E /* DescriptionFieldModifier.swift in Sources */,
 				9EBACC0B2623E8960018CDDC /* TaskItemView.swift in Sources */,
+				AA766C092628E7E000E0981E /* TitleFieldModifier.swift in Sources */,
 				AAF9CF72262222FC00F48AEB /* Persistence.swift in Sources */,
 				AAF9CF6B262222FA00F48AEB /* ContentView.swift in Sources */,
 				AAF9CF69262222FA00F48AEB /* CoTaskApp.swift in Sources */,

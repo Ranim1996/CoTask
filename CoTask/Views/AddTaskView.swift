@@ -8,26 +8,6 @@
 import SwiftUI
 import UserNotifications
 
-struct TitleTextFieldModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(6)
-    }
-}
-
-struct DescTextFieldModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(height: 60)
-            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(6)
-    }
-}
-
-
 
 struct AddTaskView: View {
     @Environment(\.managedObjectContext) var moc
@@ -49,9 +29,7 @@ struct AddTaskView: View {
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
     
-//    init() {
-//        UITableView.appearance().separatorColor = .clear
-//    }
+
     
     var body: some View {
                 
@@ -62,12 +40,12 @@ struct AddTaskView: View {
 //                VStack (alignment: .leading){
                 
                     Text("Title")
-                    TextField("Title", text: $title).modifier(TitleTextFieldModifier())
+                    TextField("Title", text: $title).modifier(TitleFieldModifier())
                     
                     
-                    Text("Describtion")
+                    Text("Description")
                     .padding(.top, 15)
-                    TextField("Describtion", text: $describtion).modifier(DescTextFieldModifier())
+                    TextField("Description", text: $describtion).modifier(DescriptionFieldModifier())
                 
                     Text("Priority")
                         .padding(.top, 15)
