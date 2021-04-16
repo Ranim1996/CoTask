@@ -8,28 +8,10 @@
 import SwiftUI
 import UserNotifications
 
-struct TitleTextFieldModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(6)
-    }
-}
-
-struct DescTextFieldModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(height: 60)
-            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(6)
-    }
-}
-
-
 
 struct AddTaskView: View {
+    
+    // MARK: - PROPERTIES
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     
@@ -49,25 +31,22 @@ struct AddTaskView: View {
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
     
-//    init() {
-//        UITableView.appearance().separatorColor = .clear
-//    }
-    
+
+    // MARK: - BODY
     var body: some View {
                 
         NavigationView {
-                        
+                 
+            // MARK: - FORM
             Form {
-                
-//                VStack (alignment: .leading){
-                
+                       
+                // MARK: - TextFields & Pickers
                     Text("Title")
-                    TextField("Title", text: $title).modifier(TitleTextFieldModifier())
+                    TextField("Title", text: $title).modifier(TitleFieldModifier())
                     
-                    
-                    Text("Describtion")
+                    Text("Description")
                     .padding(.top, 15)
-                    TextField("Describtion", text: $describtion).modifier(DescTextFieldModifier())
+                    TextField("Description", text: $describtion).modifier(DescriptionFieldModifier())
                 
                     Text("Priority")
                         .padding(.top, 15)
@@ -75,7 +54,7 @@ struct AddTaskView: View {
                         ForEach(priorities, id: \.self) {
                             Text($0)
                         }
-                    }
+                    }//: PriorityPicker
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                         
@@ -84,19 +63,19 @@ struct AddTaskView: View {
                     DatePicker("Please enter a date", selection: $deadline).labelsHidden()
                         .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
 
-//                   Section {
-                        Picker("Members", selection: $member) {
-                            ForEach(members, id: \.self) {
-                                Text($0)
-                            }
-//                        }
-                  }.padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
+                    Picker("Members", selection: $member) {
+                        ForEach(members, id: \.self) {
+                            Text($0)
+                        }
+                    }//: MemberPicker
+                    .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
 
 
+                // MARK: - Button
                     Button("Save") {
                         // add the task
                          
-                        // validate title missing
+                        // validate title missing or not
                         if self.title != "" {
                             let newTask = Task(context: self.moc)
                             newTask.id = UUID()
@@ -110,59 +89,54 @@ struct AddTaskView: View {
                             newTask.period = "upcoming"
 
                             do {
-                                
-                                permissionNotiication(task: newTask)
-                                
+                                permissionNotification(task: newTask)
                                 try self.moc.save()
-                                
-                                            
-                            }
+                            }//: DO
                             catch {
                                 print(error)
-                            }
-                        }
+                            }//: CATCH
+                        }//: IF
                         else {
                             self.errorShowing = true
                             self.errorTitle = "Title is missing"
                             self.errorMessage = "Make sure the task title at least"
                             return
-                        }
+                        }//: ELSE
                         
                         // close view
                         self.presentationMode.wrappedValue.dismiss()
                         
-                    }
+                    }//: BUTTON
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .background(Color(UIColor(named: "Primary")!))
-//                    .background(Color(0x723452))
                     .cornerRadius(9)
-//                    .foregroundColor(Color.white)
                     .foregroundColor(Color(UIColor(named: "Accent")!))
-//                }
                 
-            }
+            }//: FORM
             .navigationBarTitle("Add Task")
             .alert(isPresented: $errorShowing) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-            }
-            
-            
-
-        }
-    }
+            }//: ALERTMISSINGTITLE
+        }//: NAVVIEW
+    }//: BODY
     
-    func permissionNotiication(task: Task){
+    // MARK: - FUNCTIONS
+    func permissionNotification(task: Task){
+        //when the app is installed and the user enters his first task and date to get notified, a popup with permission request will be shown to allow the app to send notifications
+        
         do {
             
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])  {
                 success, error in
                     if success {
                         print("authorization granted")
-                    } else if let error = error {
+                    }//: IF
+                    else if let error = error {
                         print(error.localizedDescription)
-                    }
-            }
+                    }//: ELSE
+            }//: AUTHORIZATION
+            
             let content = UNMutableNotificationContent()
                 content.title = "CoTask"
                 content.body = "Do not forget to finish task: \(task.title ?? "title"), the deadline is today."
@@ -178,12 +152,11 @@ struct AddTaskView: View {
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request)
             
-        }
-    }
+        }//: DO
+    }//: FUNCTION
+}//: VIEW
 
-}
-
-
+// MARK: - PREVIEWPROVIDER
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
         AddTaskView()
