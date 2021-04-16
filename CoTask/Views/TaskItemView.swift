@@ -38,22 +38,16 @@ struct TaskItemView: View {
                         // Priority
                         if(task.priority == "High") {
                             HorizontalLine(color: Color(UIColor(named: "PriorityHigh")!))
-                            //HorizontalLine(color: Color(0xDD614A)) // hex (red)
                         }
                         else if(task.priority == "Medium") {
                             HorizontalLine(color: Color(UIColor(named: "PriorityMedium")!))
-                            //HorizontalLine(color: Color(0xD6C652)) // (yellow)
                         }
                         else {
                             HorizontalLine(color: Color(UIColor(named: "PriorityLow")!))
-                           // HorizontalLine(color: Color(0x73A580)) // (green)
                         }
-            
-                        
                    } //: VSTACK
 
                } //: NAVIGATIONLINK
-                //.padding()
                 .frame(width: geo.size.width, alignment: .leading)
                 
                 Spacer(minLength: 18)
@@ -104,16 +98,15 @@ struct TaskItemView: View {
                             self.scale = 0.5
                         self.offset = .zero
                         self.offsetY = 0
-
                     }
                 }
             )
-                
         } //: GEOMETRYREADER
     } //: BODY
     
     
     // MARK: - FUNCTIONS
+    // delete task
     func deleteTask(taskId: UUID) {
        //deleteData(entityToFetch: "Task")
         
@@ -129,23 +122,25 @@ struct TaskItemView: View {
         try? moc.save()
     }
     
+    // delete all tasks
     func deleteData(entityToFetch: String) {
-            let context = moc
-        
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-            fetchRequest.entity = NSEntityDescription.entity(forEntityName: entityToFetch, in: context)
-            fetchRequest.includesPropertyValues = false
-             do {
-                let results = try context.fetch(fetchRequest) as! [NSManagedObject]
-                for result in results {
-                    context.delete(result)
-                }
-                try context.save()
-            } catch {
-                print("fetch error -\(error.localizedDescription)")
-            }
-        }
+        let context = moc
     
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: entityToFetch, in: context)
+        fetchRequest.includesPropertyValues = false
+         do {
+            let results = try context.fetch(fetchRequest) as! [NSManagedObject]
+            for result in results {
+                context.delete(result)
+            }
+            try context.save()
+        } catch {
+            print("fetch error -\(error.localizedDescription)")
+        }
+    }
+    
+    // complete task
     func completeTask(taskId: UUID) {
         for task in tasks {
             // find this task in our fetch request

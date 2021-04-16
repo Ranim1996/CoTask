@@ -37,9 +37,8 @@ struct ContentView: View {
         NavigationView {
             
             List {
-                // Color(.systemGray5)
                 Button(action: {
-                    // Refactor todays tasks code
+                    // List today's tasks
                     listTodaysTasks()
 
                 }) {
@@ -49,6 +48,7 @@ struct ContentView: View {
                         .padding(EdgeInsets(top: 10, leading: 255, bottom: 0, trailing: 10))
                 }
 
+                // List of tasks
                 ForEach(Period.allCases, id: \.rawValue) { period in
                     Section(header: Text(period.rawValue)
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -56,23 +56,13 @@ struct ContentView: View {
                     ) {
                         ForEach(tasks.filter { Period.withLabel($0.period ?? "upcoming") == period && !$0.isDone }, id: \.self) { task in
                             
-                            
                             TaskItemView(task: task).frame(height: 60)
-                                
-
                         } //: FOREACH
-                        /*.onMove(perform: moveTask)
-                        .onLongPressGesture {
-                            withAnimation {
-                                self.editingList = true
-                            }
-                        } */
                     } //: SECTION
                 } //: FOREACH
             } //: LIST
-            //.listStyle(GroupedListStyle())
             .listStyle(PlainListStyle())
-            .navigationBarTitle("Home", displayMode: .inline)            
+            .navigationBarTitle("Home", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddScreen.toggle()
             }
@@ -93,32 +83,28 @@ struct ContentView: View {
         let synthesizer = AVSpeechSynthesizer()
 
         var todayTasks = "Today's tasks are: "
+        
+        // filter tasks
+        let tasksFiltered = tasks.filter { !$0.isDone && $0.period == "today" }
 
-        //for t in tasks {
-        for (idx, t) in tasks.enumerated() {
+
+        // loop over tasks
+        for (idx, t) in tasksFiltered.enumerated() {
             if !t.isDone && t.period == "today" {
 
-                todayTasks += "\(t.title ?? "") and"
+                todayTasks += "\(t.title ?? "") "
 
-//                            if(idx != tasks.count - 1) {
-//                                todayTasks += " and"
-//                            }
+                if(idx != tasksFiltered.count - 1) {
+                    todayTasks += " and"
+                }
             }
         }
-
+        
         if(todayTasks == "Today's tasks are: ") {
             todayTasks = "No tasks for today"
         }
-        else {
-            let start = todayTasks.index(todayTasks.startIndex, offsetBy: 0)
-            let end = todayTasks.index(todayTasks.endIndex, offsetBy: -3)
-            let range = start..<end
 
-            let mySubstring = todayTasks[range]  // play
-            
-            todayTasks = String(mySubstring)
-        }
-
+        // speak
         let utterance = AVSpeechUtterance(string: todayTasks)
 
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
@@ -126,6 +112,8 @@ struct ContentView: View {
         synthesizer.speak(utterance)
     }
 }
+
+
 
   
 
